@@ -1,2 +1,5 @@
-docusaurus:
-  label: "Docusaurus"
+tech:
+  label: "Technical Blog"
+
+auth:
+  label: "Access Control"
