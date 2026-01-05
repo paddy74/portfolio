@@ -1,10 +1,13 @@
 ---
+sidebar_label: Editing the Handbook
 description: Information on how to edit the handbook.
+tags:
+  - guide
 ---
 
-# Editing the Handbook
+# Handbook Editing Guide
 
-This article covers how to edit the handbook.
+This article covers how to edit the documents, pages, and illustrations in this handbook.
 
 :::info
 
@@ -22,11 +25,11 @@ This article is based on [GitLab Handbook | Editing the Handbook](https://handbo
 
 ## Markdown Formatting
 
-Information on how to format Markdown in the handbook is covered by [the Markdown Style Guide](./style-guide.md).
+Information on how to format Markdown in this handbook is covered by [the Markdown Style Guide](./style-guide.md).
 
 ---
 
-## Editing the Handbook Locally
+## Editing this Handbook Locally
 
 ---
 

@@ -1,3 +1,9 @@
+---
+tags:
+  - markdown
+  - styleguide
+---
+
 # Markdown Style Guide
 
 This article covers how to get started with Markdown, what editors to use, writing conventions, and other tips.
@@ -8,7 +14,7 @@ This article is based on [GitLab Handbook | Handbook Markdown Guide](https://han
 
 :::
 
-For a list of Markdown features supported by Docusaurus, the library powering the handbook, see [Docusaurus | Markdown Features](https://docusaurus.io/docs/markdown-features) and [Markdown Guide | Docusaurus](https://www.markdownguide.org/tools/docusaurus/).
+For a list of Markdown features supported by Docusaurus, the library powering this handbook, see [Docusaurus | Markdown Features](https://docusaurus.io/docs/markdown-features) and [Markdown Guide | Docusaurus](https://www.markdownguide.org/tools/docusaurus/).
 
 ## Markdown Conventions
 
@@ -79,7 +85,7 @@ Use the editors available in your internal development or code repository platfo
 
 #### Visual Studio Code
 
-I recommend Visual Studio Code as your code editor. To edit Markdown files with VS Code, start with the [Markdown and Visual Studio Code guide](https://code.visualstudio.com/docs/languages/markdown) and the handbook's recommended [extensions](https://github.com/paddy74/paddy74.github.io/blob/main/.vscode/extensions.jsonc) and [settings](https://github.com/paddy74/paddy74.github.io/blob/main/.vscode/settings.jsonc).
+I recommend Visual Studio Code as your code editor. To edit Markdown files with VS Code, start with the [Markdown and Visual Studio Code guide](https://code.visualstudio.com/docs/languages/markdown) and this handbook's recommended [extensions](https://github.com/paddy74/paddy74.github.io/blob/main/.vscode/extensions.jsonc) and [settings](https://github.com/paddy74/paddy74.github.io/blob/main/.vscode/settings.jsonc).
 
 Additional information about configuring VSCode is covered by [the VSCode configuration guide](../../setup/configure-vscode.md).
 
@@ -109,7 +115,7 @@ Use the [Mammoth](https://github.com/mwilliamson/python-mammoth) library to conv
 
 1. Install Mammoth using `pip install mammoth`.[^1]
 2. Convert `.docx` to `.md` using Mammoth by running `mammoth SomeWordDocument.docx SomeMdDocument.md --output-format=markdown`
-3. Check the generated Markdown file and correct conversion issues and format it for the Handbook.
+3. Check the generated Markdown file and correct conversion issues and format it for this handbook.
 
 [^1]: [PyPi | Mammoth](https://pypi.org/project/mammoth/)
 

@@ -1,10 +1,12 @@
 ---
-description: Handbook troubleshooting, solving for a specific use case, and other tips for writing documentation for the handbook.
+description: Handbook troubleshooting, solving for a specific use case, and other tips for writing documentation for this handbook.
+tags:
+  - guide
 ---
 
 # Practical Handbook Editing Tips
 
-This article covers instructions, tips, and examples for editing documentation in the handbook and working [handbook-first](https://about.gitlab.com/company/culture/all-remote/handbook-first-documentation/).
+This article covers instructions, tips, and examples for editing documentation in this handbook and working [handbook-first](https://about.gitlab.com/company/culture/all-remote/handbook-first-documentation/).
 
 :::info
 
