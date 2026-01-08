@@ -1,0 +1,50 @@
+> Visual Studio Code (commonly referred to as VS Code) is an integrated development environment developed by Microsoft for Windows, Linux, macOS and web browsers. Features include support for debugging, syntax highlighting, intelligent code completion, snippets, code refactoring, and embedded version control with Git. Users can change the theme, keyboard shortcuts and preferences, as well as install extensions that add functionality, including to extend its capabilities to function as an IDE for other languages.[^1]
+
+[^1]: [Wikipedia | Visual Studio Code](https://en.wikipedia.org/wiki/Visual_Studio_Code)
+
+- :link: `https://code.visualstudio.com/`
+
+{/* For information on how to configure VSCode after installation, see the [Configuring VSCode](./setup-vscode.mdx) guide. */}
+
+Official installation instructions are documented at [code.visualstudio.com/docs/setup/setup-overview](https://code.visualstudio.com/docs/setup/setup-overview).
+
+<Tabs queryString="os">
+
+<TabItem value="linux" label="Linux">
+
+On Linux, you can install VSCode using a package manager (e.g., APT, Pacman, Flatpak, Snaps, etc.) or from [code.visualstudio.com/download](https://code.visualstudio.com/Download).
+
+You can use the below commands to install VSCode (x64) on a Debian based OS.
+
+```bash
+wget -O vscode.deb https://code.visualstudio.com/sha/download?build=stable&os=linux-deb-x64
+sudo apt install ./vscode.deb
+```
+
+</TabItem>
+
+<TabItem value="macos" label="macOs">
+
+On macOS, you can install VSCode from [code.visualstudio.com/download](https://code.visualstudio.com/Download) or using HomeBrew.
+
+```bash
+brew install --cask visual-studio-code
+```
+
+</TabItem>
+
+<TabItem value="windows" label="Windows">
+
+On Windows, you can install VSCode from the [Microsoft Store](https://aka.ms/vscode-msstore), from [code.visualstudio.com/download](https://code.visualstudio.com/Download), or from the command-line using WinGet:
+
+```powershell
+winget install -e --id Microsoft.VisualStudioCode
+```
+
+</TabItem>
+
+</Tabs>
+
+#### Other ways to run VSCode
+
+VSCode can also be used as a [portable app](https://code.visualstudio.com/docs/editor/portable), in the browser with [vscode.dev](https://vscode.dev/), or remotely with the [VSCode Server](https://code.visualstudio.com/docs/remote/vscode-server).

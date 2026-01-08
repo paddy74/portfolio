@@ -1,0 +1,301 @@
+---
+description: How to install Git, set your user config, use SSH keys, and sign commits.
+tags:
+  - git
+  - guide
+---
+
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
+
+# Configuring Git
+
+This article provides a guide on configuring Git for use on your personal workstation.
+
+- Git's Official Homepage: `https://git-scm.com/`
+- Find Git's source code on GitHub: `https://github.com/git/git`
+- Git is a member project of [Software Freedom Conservancy](https://sfconservancy.org/)
+
+## Installing Git
+
+import InstallGitPart from "./_installguides/_git.mdx";
+
+<InstallGitPart />
+
+## Git Config
+
+Run the following commands to configure your global git settings:
+
+```bash
+git config --global user.name "FIRST LAST"
+git config --global user.email "your_email@example.com"
+git config --global core.autocrlf input
+git config --global color.ui auto
+git config push.default simple
+git config http.postBuffer 157286400
+```
+
+This will result in a `~/.gitconfig` file with something similar to the below content:
+
+```ini
+[core]
+    autocrlf = input
+[user]
+    name = FIRST LAST
+    email = your_email@example.com
+[color]
+    ui = auto
+[push]
+    default = simple
+[http]
+    postBuffer = 157286400
+```
+
+:::tip
+
+See [the Git troubleshooting tips](../toolstips/githelp.md) on how to identify the correct value to use for `user.name`.
+
+:::
+
+## SSH Authorization
+
+I recommend using **Secure Shell (SSH)** protocol to authenticate with remote Git repositories. To understand why, see [Connecting to Git: SSH vs HTTPS](../compare/git-ssh-vs-https.md).
+
+The following guide is a basic walkthrough of setting up an SSH authorization key-pair. I recommend following official guides when using a specific Git provider (e.g., [GitLab](https://docs.gitlab.com/ee/user/ssh.html#generate-an-ssh-key-pair), [GitHub](https://docs.github.com/en/authentication/connecting-to-github-with-ssh)), but this walkthrough is universally applicable.
+
+You will need:
+
+- The domain address of your remote Git server (e.g., github.com).
+
+### Create the SSH directory
+
+Create the SSH directory, if it does not already exist. The `keys/` subdirectory is not _required_, but it is recommended &mdash especially if you have a lot of SSH keys.
+
+<Tabs queryString="os">
+
+<TabItem value="windows" label="Windows">
+
+```powershell
+New-Item ~/.ssh/keys -ItemType Directory -ea 0
+```
+
+</TabItem>
+
+<TabItem value="unix" label="macOS and Linux">
+
+```bash
+mkdir -p ~/.ssh/keys
+chmod 700 ~/.ssh
+```
+
+</TabItem>
+
+</Tabs>
+
+### Generate an SSH key pair
+
+Use [ED25519](https://ed25519.cr.yp.to/) when generating a new SSH key pair. ED25519 keys are smaller, faster, and more secure than RSA[^1]. Always specify a key passphrase.
+
+[^1]: [Practical Cryptography With Go](https://leanpub.com/gocrypto/read#leanpub-auto-chapter-5-digital-signatures)
+
+The following command will create an **Authorization key-pair for a Git server hosted at gitserver.example.com**.
+
+<Tabs queryString="os">
+
+<TabItem value="windows" label="Windows">
+
+```powershell
+ssh-keygen `
+  -C "your_email@example.com" `
+  -f "~/.ssh/keys/example" `
+  -t ed25519
+```
+
+</TabItem>
+
+<TabItem value="unix" label="macOS and Linux">
+
+```bash
+ssh-keygen \
+  -C "your_email@example.com" \
+  -f "~/.ssh/keys/example" \
+  -t ed25519
+chmod 600 ~/.ssh/keys/example
+```
+
+</TabItem>
+
+</Tabs>
+
+At the prompt, type a secure passphrase[^2].
+
+[^2]: Originally published in 2017 in compliance with the Federal Information Security Modernization Act of 2014 for federal agencies and most recently updated in 2020, the NIST Password Guideline Standards are laid out in [NIST Special Publication (SP) 800-63B](https://pages.nist.gov/800-63-3/sp800-63b.html).
+
+### Configure your SSH client
+
+The SSH client configuration file allows you to specify the SSH key to use for a given SSH remote server connection. This will ensure that your SSH key is used for the corresponding Git server.
+
+<Tabs queryString="os">
+
+<TabItem value="windows" label="Windows">
+
+```powershell
+Add-Content -Path ~/.ssh/config -Value "# Example GitServer`nHost gitserver.example.com`n  User git`n  PreferredAuthentications publickey`n  IdentityFile ~/.ssh/keys/example`n"
+```
+
+</TabItem>
+
+<TabItem value="unix" label="macOS and Linux">
+
+```bash
+touch ~/.ssh/config && chmod 600 ~/.ssh/config
+printf "\n# Example GitServer\nHost gitserver.example.com\n  User git\n  PreferredAuthentications publickey\n  IdentityFile ~/.ssh/keys/example\n"
+```
+
+</TabItem>
+
+</Tabs>
+
+This will append the below host configuration to your `~/.ssh/config` file.
+
+```ini
+# Example GitServer
+Host gitserver.example.com
+  Hostname gitserver.example.com
+  User git
+  PreferredAuthentications publickey
+  IdentityFile ~/.ssh/keys/example
+```
+
+### Add the SSH key to your account
+
+Add the public SSH key to your account on the remote Git server. We recommend naming your key using your username and the name or ID of your client system, such as `ptyng-AAAAA0000000000` or `AAAAA0000000000.auth.example.com`.
+
+### Verify that you can connect
+
+Verify that you can connect to the remote Git server by opening a terminal and running `ssh -T git@gitserver.example.com`. You should see a message like _Welcome to GitServer, `@username`!_.
+
+## GPG Signing Key
+
+You can sign commits individually or configure your Git client to sign commits by-default:
+
+- Sign individual Git commits manually:
+  1. Add the `-S` flag to any commit you want to sign:
+
+  ```shell
+  git commit -S -m "My commit message"
+  ```
+
+  1. Enter the passphrase of your GPG key when asked.
+  2. Push to the remote Git server and check that your commits are verified.
+
+- Sign all Git commits by default:
+
+  ```shell
+  # For the active repository only
+  git config commit.gpgsign true
+  # For all repositories
+  git config --global commit.gpgsign true
+  ```
+
+:::info
+
+Using GPG keys to sign commits requires that you download and install [the GPG command line tools](https://www.gnupg.org/download/) for your operating system.
+
+:::
+
+:::note
+
+This guide assumes that you are using GPG v2.1.17 or greater.
+
+:::
+
+### Generate a GPG Key
+
+This guide will use the recommended key pair and encryption options.
+
+1. Open a terminal and enter the below command. We are including the `--expert` option so that the desired configuration options are available.
+
+   ```bash
+   gpg --expert --full-gen-key
+   ```
+
+2. Select the `9th` option. This will create an ECC (elliptic curve cryptogrpahy) public/private keypair and an ECC signing key.
+
+3. For curve, select the `1st` option to create ED25519 keys.
+
+4. Enter your user ID information. Ensure that you use the email address associated with your account.
+
+5. Enter a secure passphrase[^2].
+
+6. Optionally, add a comment.
+
+   ```plaintext
+   Comment: Signing key for Git at gitserver.example.com
+   ```
+
+### Associate your GPG key with Git
+
+The following instructions were copied from [GitLab | GPG keys - Associate your GPG key with Git](https://docs.gitlab.com/user/project/repository/signed_commits/gpg/#associate-your-gpg-key-with-git) and edited to align with this guide.
+
+> After you create your [GPG key](https://docs.gitlab.com/user/project/repository/signed_commits/gpg/#create-a-gpg-key) and [add it to your account](https://docs.gitlab.com/user/project/repository/signed_commits/gpg/#add-a-gpg-key-to-your-account), you must configure Git to use this key:
+>
+> 1. Run this command to list the private GPG key you just created, replacing `<EMAIL>` with the email address for your key:
+>
+>    ```shell
+>    gpg --list-secret-keys --keyid-format LONG <EMAIL>
+>    ```
+>
+> 2. Copy the GPG private key ID that starts with `sec`. In this example, the private key ID is `00000A00AA000A0A`:
+>
+> ```plaintext
+>    sec   ed25519/00000A00AA000A0A 2017-08-18 [SC] [expires: 2019-08-18]
+>          D5E4F29F3275DC0CDA8FFC8730F2B65B9246B6CA
+>    uid                   [ultimate] First Last (Comment) <your_email>
+>    ssb   ed25519/A0AAA0000A0000A0 2017-08-18 [E]
+> ```
+>
+> 3. Run this command to configure Git to sign your commits with your key, replacing `<KEY ID>` with your GPG key ID:
+>
+>    ```shell
+>    git config --global user.signingkey <KEY ID>
+>    ```
+
+### Add the GPG key to your account
+
+1. Display your public key by entering the below command. Substitute `your_email@example.com` with the email you added to the key.
+
+   ```bash
+   gpg --armor --export your_email@example.com
+   ```
+
+2. Copy your GPG public key, beginning with and including `-----BEGIN PGP PUBLIC KEY BLOCK-----` and ending with and including `-----END PGP PUBLIC KEY BLOCK-----`.
+
+3. Add the public GPG key to your account
+
+- :link: In [GitHub](https://docs.github.com/en/authentication/managing-commit-signature-verification/adding-a-gpg-key-to-your-github-account)
+- :link: In [GitLab](https://docs.gitlab.com/user/project/repository/signed_commits/gpg/#add-a-gpg-key-to-your-account).
+
+### Using multiple GPG keys
+
+> If you maintain signing keys for separate purposes, such as work and personal use, use an IncludeIf statement in your .gitconfig file to set which key you sign commits with.[^3]
+
+[^3]: [GitLab | GPG keys - Set signing key conditionally](https://docs.gitlab.com/user/project/repository/signed_commits/gpg/#set-signing-key-conditionally)
+
+1. In the same directory as your main `~/.gitconfig` file, create a second purpose-specific file, such as `.gitconfig-example` or `.gitconfigs/.gitconfig.example`.
+
+2. In your separate config file(s), add your purpose-specific configuration overrides. As an example:
+
+   ```ini
+   [user]
+     name = FIRST LAST
+     email = your_email@example.com
+     signingkey = <KEY ID>
+   ```
+
+3. At the end of your main `~/.gitconfig` file, configure conditional use of your purpose-specific configuration overrides. As an example:
+
+   ```ini
+   [includeIf "gitdir:~/Projects/example-project/"]
+       path = ~/.gitconfigs/.gitconfig.example
+   ```
