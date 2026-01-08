@@ -1,0 +1,70 @@
+---
+description: How to install and manage multiple Python versions, virtual environments, and dependencies using pyenv and pip.
+tags:
+  - python
+  - guide
+  - deprecated
+unlisted: true
+---
+
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
+
+# Python Setup Guide (Deprecated)
+
+:::warning[Deprecated]
+
+The information in this section is deprecated. It is maintained for historical record.
+
+:::
+
+This article is a guide on setting up Python on your personal workstation and how to manage multiple Python versions, virtual environments, and project dependencies.
+
+- **Package Manager**: [`pip`](https://pypi.org/project/pip/)
+- **Language Server**: [Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)
+- **Static Type Checker**: [Pyright](https://github.com/microsoft/pyright)
+- **Linter**: [Flake8](https://pypi.org/project/flake8/)
+- **Code Formatter**: [Black](https://pypi.org/project/black/)
+
+## Installing Python
+
+The Python Version Manager, `pyenv` is my recommended method for installing Python. On macOS and Linux, the recommended tool is [pyenv](https://github.com/pyenv/pyenv). On Windows, my recommended tool is [pyenv for Windows](https://github.com/pyenv-win/pyenv-win).
+
+```powershell
+# Display the available Python 3.14 versions
+pyenv install -l | findstr 3.14
+
+# Install the latest Python 3.14 version
+pyenv install 3.14
+pyenv global
+```
+
+<Tabs queryString="os">
+
+  <TabItem value="windows" label="Windows">
+
+### pyenv for Windows
+
+pyenv for Windows is a port of [`pyenv`](https://github.com/pyenv/pyenv) for Windows.
+
+```powershell
+Invoke-WebRequest -UseBasicParsing -Uri "https://raw.githubusercontent.com/pyenv-win/pyenv-win/master/pyenv-win/install-pyenv-win.ps1" -OutFile "./install-pyenv-win.ps1"; &"./install-pyenv-win.ps1"
+```
+
+Additional installation instructions and documentation can be found at `https://github.com/pyenv-win/pyenv-win`.
+
+  </TabItem>
+
+  <TabItem value="unix" label="macOS and Linux">
+
+### pyenv
+
+> pyenv lets you easily switch between multiple versions of Python. It's simple, unobtrusive, and follows the UNIX tradition of single-purpose tools that do one thing well.
+
+- :link: `https://github.com/pyenv/pyenv`
+
+Installation instructions can be found at `https://github.com/pyenv/pyenv`.
+
+  </TabItem>
+
+</Tabs>

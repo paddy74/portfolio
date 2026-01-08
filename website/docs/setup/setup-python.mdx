@@ -1,0 +1,207 @@
+---
+description: How to install and manage multiple Python versions, virtual environments, and dependencies using uv.
+tags:
+  - python
+  - guide
+---
+
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
+
+# Python Setup Guide
+
+This article is a guide on setting up Python on your personal workstation and how to manage multiple Python versions, virtual environments, and project dependencies.
+
+- **Package Manager**: [`uv`](https://docs.astral.sh/uv/)
+- **Language Server**: [Pylance](https://marketplace.visualstudio.com/items?itemName=ms-python.vscode-pylance)
+- **Static Type Checker**: [`basedpyright`](https://github.com/detachhead/basedpyright)
+- **Linter**: [Ruff Linter](https://docs.astral.sh/ruff/linter/)
+- **Code Formatter**: [Ruff Formatter](https://docs.astral.sh/ruff/formatter/)
+
+## Installing Python
+
+I have adopted **uv** as the standard solution for managing Python versions, virtual environments, and dependencies. To learn more about **uv**, take a look at its [documentation](https://docs.astral.sh/uv/) and [blog](https://astral.sh/blog/uv).
+
+### Manage Python with **uv**
+
+> An extremely fast Python package and project manager, written in Rust.
+>
+> 🚀 A single tool to replace `pip`, `pip-tools`, `pipx`, `poetry`, `pyenv`, `twine`, `virtualenv`, and more.
+
+- :link: `https://docs.astral.sh/uv`
+
+Official installation instructions can be found on the [**uv** Getting Started page](https://docs.astral.sh/uv/getting-started/installation/). To upgrade **uv**, use the upgrade method of the same package manager used to install **uv**.
+
+<Tabs queryString="os">
+
+  <TabItem value="windows" label="Windows">
+
+> **uv** is available via [WinGet](https://winstall.app/apps/astral-sh.uv).
+>
+> ```bash
+> winget install --id=astral-sh.uv  -e
+> ```
+
+  </TabItem>
+
+  <TabItem value="unix" label="macOS and Linux">
+
+> **uv** is available in the core Homebrew packages.
+>
+> ```bash
+> brew install uv
+> ```
+
+  </TabItem>
+
+</Tabs>
+
+:::tip
+
+[Enable shell autocompletion](https://docs.astral.sh/uv/getting-started/installation/#shell-autocompletion) for **uv** and **uvx** commands commands.
+
+:::
+
+### Install Python with **uv**
+
+> If Python is already installed on your system, **uv** will [detect and use](https://docs.astral.sh/uv/guides/install-python/#using-existing-python-versions) it without configuration. However, **uv** can also install and manage Python versions. **uv** [automatically installs](https://docs.astral.sh/uv/guides/install-python/#automatic-python-downloads) missing Python versions as needed — you don't need to install Python to get started.
+
+- Install the latest Python version with `uv python install`
+- Install a specific Python version, such as `3.14`, with `uv python install 3.14`
+
+## Using Python
+
+This section assumes that you are using **uv** to manage your Python versions and project dependencies. For in-depth guides, use the [official **uv** documentation](https://docs.astral.sh/uv/).
+
+### Python Shell
+
+> By default, **uv** will use your default Python interpreter (the first it finds) when running, installing, or upgrading tools. You can specify the Python interpreter to use with the --python option.
+
+For example, to start a Python shell with your default Python interpreter:
+
+```bash
+uvx python
+```
+
+Or, with a specific Python version:
+
+```bash
+uvx --python 3.14 python
+```
+
+**uv** also adds the installed version to your path:
+
+```bash
+python3.14
+```
+
+### Virtual Environments
+
+> A virtual environment is a lightweight way to isolate packages from a Python installation's environment. Unlike pip, uv requires using a virtual environment by default.[^1]
+
+[^1]: [uv | Using Python environments](https://docs.astral.sh/uv/pip/environments/)
+
+[Initialize a new virtual environment](https://docs.astral.sh/uv/pip/environments/#creating-a-virtual-environment) using the default Python version by running `uv venv`. To use a specific Python version, use `uv venv --python 3.14`.
+
+**uv** will automatically [discover Python interpreters](https://docs.astral.sh/uv/concepts/python-versions/#finding-a-python-executable) and &mdash when using the default virtual environment name (`venv`) &mdash [environments](https://docs.astral.sh/uv/pip/environments/#discovery-of-python-environments).
+
+You can explicitly "activate" a virtual environment in the active shell/terminal so that it is that session's Python interpreter on the `PATH` as `python`.
+
+<Tabs queryString="os">
+
+  <TabItem value="windows" label="Windows">
+
+```powershell
+.venv\Scripts\activate
+```
+
+  </TabItem>
+
+  <TabItem value="unix" label="macOS and Linux">
+
+```bash
+source .venv/bin/activate
+```
+
+  </TabItem>
+
+</Tabs>
+
+To "deactivate" an "active" virtual environment, use the `deactivate` command.
+
+```bash
+deactivate
+```
+
+#### Managing Packages
+
+:link: `https://docs.astral.sh/uv/pip/packages/`
+
+> **uv** is designed as a [drop-in replacement](https://docs.astral.sh/uv/pip/compatibility/) for common `pip` and `pip-tools` workflows.
+
+> To [install a package into the virtual environment](https://docs.astral.sh/uv/pip/packages/), e.g., Flask:
+>
+> ```bash
+> uv pip install flask
+> ```
+
+### Python Projects
+
+> **uv** supports managing Python projects, which define their dependencies in a `pyproject.toml` file.
+
+[Initialize a Python project](https://docs.astral.sh/uv/concepts/projects/) with the [`uv init`](https://docs.astral.sh/uv/reference/cli/#uv-init) command.
+
+Instead of using a [**pip** requirements file](https://pip.pypa.io/en/stable/reference/requirements-file-format/), **uv** uses `pyproject.toml` to specify project dependencies. Similar to how you can install the packages in a requirements file using `pip install -r requirements.txt`, you can synchronize your virtual environment with a project's `pyproject.toml` by using the [`uv sync`](https://docs.astral.sh/uv/reference/cli/#uv-sync) command.
+
+#### Managing Dependencies
+
+:link: `https://docs.astral.sh/uv/concepts/projects/dependencies/`
+
+> uv supports modifying the project's dependencies with [`uv add`](https://docs.astral.sh/uv/reference/cli/#uv-add) and [`uv remove`](https://docs.astral.sh/uv/reference/cli/#uv-remove), but dependency metadata can also be updated by editing the `pyproject.toml` directly.
+
+> The `--dev`, `--group`, or `--optional` flags can be used to add a dependencies to an alternative field.
+
+> Dependencies declared in a requirements.txt file can be added to the project with the -r option:
+>
+> ```bash
+> uv add -r requirements.txt
+> ```
+
+#### Syncing Project Dependencies
+
+> Locking is the process of resolving your project's dependencies into a lockfile. Syncing is the process of installing a subset of packages from the lockfile into the project environment.[^2]
+
+[^2]: [uv | Projects - Locking and syncing](https://docs.astral.sh/uv/concepts/projects/sync/)
+
+Quickly sync all project dependencies &mdash including optional, development, and additional group dependencies &mdash with `uv sync --all-extras --all-groups`.
+
+#### Upgrading Project Dependencies
+
+> With an existing uv.lock file, uv will prefer the previously locked versions of packages when running uv sync and uv lock. Package versions will only change if the project's dependency constraints exclude the previous, locked version.[^3]
+
+[^3]: [uv | Projects - Locking and syncing, Upgrading locked package versions](https://docs.astral.sh/uv/concepts/projects/sync/#upgrading-locked-package-versions)
+
+Upgrade all package versions and the lock file to the latest version _allowed by the project's dependency constraints_ with `uv lock --upgrade`.
+
+##### Upgrading Dependency Constraints
+
+> it's really nice to be able to browse narrow ranges of your top level dependencies within pyproject.toml and have a tool automatically bump them for you so you don't have to go to PyPI and look at each top level dependency to see what the latest version is.[^4]
+
+[^4]: [github/astral-sh/uv/issues/6794 - comment2442335752](https://github.com/astral-sh/uv/issues/6794#issuecomment-2442335752)
+
+Automatically bumping top-level dependency constraints within `pyproject.toml` is not a feature of **uv**. This has been proposed at `https://github.com/astral-sh/uv/issues/6794` with a significant amount of discussion. Easily browsing narrow ranges of a project's top-level dependencies and automatically bumping their versions saves time by removing the work of going to PyPI to check what the latest version of every dependency is and manually updating the version in `pyproject.toml`. It also supports continuous integration pipelines for testing new dependency versions and creating change requests, such as what is done by dependency bots.
+
+However, it can effectively be achieved by referencing the outdated dependency tree and manually incrementing versions.
+
+```bash
+# Show a tree of outdated top-level dependencies
+uv tree --outdated --depth 1 --all-groups
+```
+
+This is also possible using a dedicated tool, [`uv-upx`](https://pypi.org/project/uv-upx/).
+
+:::info
+
+You can see how this is implemented for npm with [`npm-check-updates`](https://www.npmjs.com/package/npm-check-updates).
+
+:::
