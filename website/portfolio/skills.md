@@ -21,7 +21,7 @@ sidebar_position: 3
 
 ## Libraries & Frameworks
 
-- NodeJS
+- Node.js
 - ReactJS
 - ASP.NET Core
 - FastAPI
