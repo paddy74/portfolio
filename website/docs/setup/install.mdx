@@ -1,0 +1,525 @@
+---
+sidebar_position: 1
+description: A guide on installing and configuring software on your personal workstation.
+tags:
+  - guide
+---
+
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
+
+# Personal Workstation Setup
+
+This article documents the basic installation steps for various software you may need to install on your on your personal development workstation. It is _not_ a list of "required" or role-specific software, an analysis of alternatives, or a configuration guide but it will provide respective links if the page exists.
+
+## Instructions
+
+1. Identify the software required for your role.
+2. Note which required software _requires_ administrative access.
+3. If IT policy requires approval before adding any software even if such doing so does not require elevated privileges, follow the appropriate approval process before proceeding.
+4. If IT policy requires approval before adding any software that requires elevated privileges, follow the appropriate approval process before proceeding.
+
+### Installing Shadow IT
+
+Installing _and_ updating software _should_ be enabled through your organization's software asset management tool; at minimum for software that requires elevated privileges to install and/or update. However, not all organizations are able to support this security posture or there may be so many inefficiencies in the process that following it is unrealistic. Ideally, the organization provides some secondary mechanisms, such as temporarily elevated privileges, to circumvent these barriers until improvements can be made. Otherwise, users will find a way to install the software they want to use &mdash creating shadow IT, security vulnerabilities, and license compliance risks.
+
+Therefore, this section defines the following hierarchy of installation approaches:
+
+1. **Ideal.** Install _and update_ using the organization's software asset management solution (i.e., an internally managed package manager).
+2. **Risk aware. Improve the process.** The organization does not have a sufficient security policy in place or the policy is too cumbersome for full compliance. The organization is aware of this and has documented authorized "workarounds". Ideally, there is a plan to address known issues. Some examples are:
+
+- **Repository of Authorized Software.** The organization maintains a list of software that has been reviewed for security compliance and licensing. A preferred installation and license management process is documented and reasonably usable.
+- **Elevated Privileges.** The organization enables temporary elevated privileges so that users can install and/or update software that cannot be installed/updated otherwise.
+
+3. **Risk aware. Enforce the process.** The organization does not have a sufficient security policy in place or the policy is too cumbersome for full compliance. The organization is aware of this but _does not_ support any workarounds and intends to achieve compliance through current policies and additional oversight.
+4. **Risk avoidant.** The organization does not have a sufficient security policy in place or the policy is too cumbersome for full compliance. The organization is not aware or is unconcerned about this.
+
+## Initial Setup
+
+Initial setup involves installing and configuring the package manager used throughout the rest of this article. On Windows, this is [WinGet](#winget) and on macOS this is [Homebrew](#homebrew). The package manager for Linux-based operating systems varies depending on its distribution and should be pre-installed; usually APT, Pacman, RPM, Flatpak, or Snap.
+
+<Tabs queryString="os">
+<TabItem value="macos" label="macOS">
+### Homebrew
+
+Follow the official installation instructions at `https://brew.sh/`.
+
+</TabItem>
+
+<TabItem value="windows" label="Windows">
+
+### WinGet
+
+The Windows Package Manager (WinGet) is installed by default on Windows 11, but not on Windows 10. If you already have WinGet installed, do not reinstall it.
+
+- :heavy_check_mark: Installed by default (Windows 11)
+- :link: `https://github.com/microsoft/winget-cli`
+- :book: `https://learn.microsoft.com/en-us/windows/package-manager/`
+
+Open PowerShell or Microsoft PowerShell and run:
+
+```powershell
+Add-AppxPackage -RegisterByFamilyName -MainPackage Microsoft.DesktopAppInstaller_8wekyb3d8bbwe
+```
+
+### PowerShell
+
+PowerShell 7, formerly known as "PowerShell Core" and now labeled as just "PowerShell", is the successor to Microsoft PowerShell. PowerShell is installed by default on Windows 11, but is (usually) not pre-installed on Windows 10. If you already have PowerShell installed, do not reinstall it.
+
+- :lock: Requires elevated privileges to install
+- :heavy_check_mark: Installed by default (Windows 11)
+- :link: `https://github.com/PowerShell/PowerShell`
+- :book: `https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell-on-windows`
+
+Open Microsoft PowerShell and run:
+
+```powershell
+winget install --id Microsoft.Powershell --source winget
+```
+
+### Windows Terminal
+
+Windows Terminal is installed by default on Windows 11, but not on Windows 10. If you already have Windows Terminal installed, do not reinstall it.
+
+- :heavy_check_mark: Installed by default (Windows 11)
+- :link: `https://github.com/microsoft/terminal`
+- :book: `https://learn.microsoft.com/en-us/windows/terminal/`
+
+```powershell
+winget install -e --id Microsoft.WindowsTerminal
+```
+
+</TabItem>
+</Tabs>
+
+## Text Editors and IDEs
+
+### Sublime Text 4
+
+Sublime Text is a extendable cross-platform text editor.
+
+- :lock: Requires elevated privileges to install
+- :heavy_dollar_sign: [License required for business use](https://www.sublimehq.com/sales_faq)
+- :link: `https://www.sublimetext.com/`
+- :book: `https://www.sublimetext.com/download`
+
+<Tabs queryString="os">
+
+<TabItem value="windows" label="Windows">
+  ```powershell winget install -e --id SublimeHQ.SublimeText.4 ```
+</TabItem>
+
+<TabItem value="debian" label="Linux (Debian)">
+
+```bash
+wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/sublimehq-archive.gpg > /dev/null
+echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+apt-get update && apt-get install -y apt-transport-https && apt-get install -y sublime-text
+```
+
+</TabItem>
+
+</Tabs>
+
+### Visual Studio Code (VSCode)
+
+import InstallVscodePart from "./_installguides/_vscode.mdx";
+
+<InstallVscodePart />
+
+### NotePad++
+
+NotePad++ is not a recommended text editor alternative, although it is a viable option.
+
+- :lock: Requires elevated privileges to install
+- :heavy_check_mark: Installed by default (Windows)
+- :link: `https://notepad-plus-plus.org/`
+
+```powershell
+winget install -e --id Notepad++.Notepad++
+```
+
+## Version Control Tools
+
+### Git
+
+import InstallGitPart from "./_installguides/_git.mdx";
+
+<InstallGitPart />
+
+### WinMerge
+
+> WinMerge is an Open Source differencing and merging tool for Windows. WinMerge can compare both folders and files, presenting differences in a visual text format that is easy to understand and handle.
+
+- :link: `https://winmerge.org/`
+
+```powershell
+# Windows (Winget)
+winget install -e --id WinMerge.WinMerge
+```
+
+---
+
+## Programming Languages
+
+### Node.js
+
+- :link: `https://nodejs.org/`
+
+I recommend using a version manager to install Node.js. Specifically, I recommend using [Volta](https://volta.sh/). A comparison of popular Node.js version managers can be found at [Node.js Version Manager Alternatives](../compare/nvm-alts.md).
+
+For package management, I recommend using [pnpm](https://pnpm.io/). A comparison of leading Node.js package managers can be found at [Node.js Package Manager Alternatives](../compare/npm-alts.md).
+
+#### Install Node.js with Volta
+
+Official installation instructions can be found at [Volta | Getting Started](https://docs.volta.sh/guide/getting-started).
+
+<Tabs groupId="os">
+
+<TabItem value="windows" label="PowerShell">
+```powershell
+winget install -e --id Volta.Volta`
+```
+
+</TabItem>
+
+<TabItem value="macos" label="macOS (Homebrew)">
+```bash
+curl https://get.volta.sh | bash
+```
+
+</TabItem>
+
+<TabItem value="debian" label="Linux (Debian)">
+```bash
+curl https://get.volta.sh | bash
+```
+
+</TabItem>
+
+</Tabs>
+
+### Python
+
+See [the Python Setup Guide](./setup-python.mdx) for instructions on how to install and configure Python.
+
+### Java (OpenJDK)
+
+> To build and run Java applications, a Java Compiler, Java Runtime Libraries, and a Virtual Machine are required that implement the Java Platform, Standard Edition ("Java SE") specification.
+>
+> The OpenJDK is the open source reference implementation of the Java SE Specification, but it is only the source code. Binary distributions are provided by different vendors for a number of supported platforms. These distributions differ in licenses, commercial support, supported platforms, and update frequency.
+
+- :link: `https://openjdk.org/`
+
+[Multiple builds of OpenJDK are available](https://www.azul.com/java-alternative-vendors/). The recommended build you should install will vary [depending on your use case](https://stackoverflow.com/a/61337953). For more information, see [Which Version of JDK Should I Use?](https://whichjdk.com/).
+
+| Recommendation | Distribution |
+| --- | --- |
+| Default recommendation | [Eclipse Temurin](#eclipse-temurin), formerly AdoptOpenJDK |
+| When used in an Alpine based container | [Zulu Community](https://www.azul.com/downloads/) |
+| Where memory usage is a priority | [Eclipse OpenJ9](https://eclipse.dev/openj9/) or [IBM Semeru](https://developer.ibm.com/languages/java/) |
+| AWS | [Amazon Coretto](https://aws.amazon.com/corretto/) |
+| Azure | [Microsoft OpenJDK](https://learn.microsoft.com/en-us/java/openjdk/) |
+
+#### Eclipse Temurin
+
+Eclipse Temurin, formerly AdoptOpenJDK, is the default recommended build of OpenJDK. Installation instructions can be found at [Adoptium | Install Eclipse Temurin](https://adoptium.net/installation/).
+
+- :link: `https://adoptium.net/temurin/`
+
+<Tabs groupId="os">
+<TabItem value="windows" label="PowerShell">
+```powershell
+winget install -e --id EclipseAdoptium.Temurin.25.JDK`
+```
+</TabItem>
+
+<TabItem value="macos" label="macOS (Homebrew)">
+  ```bash brew install --cask temurin@25 ```
+</TabItem>
+
+<TabItem value="debian" label="Linux (Debian)">
+```bash apt-get install temurin-25-jdk ```
+</TabItem>
+</Tabs>
+
+---
+
+## Command-Line Interfaces
+
+### Databricks CLI
+
+> The Databricks command-line interface (also known as the Databricks CLI) provides a tool to automate the Databricks platform from your terminal, command prompt, or automation scripts.
+
+- :link: `https://docs.databricks.com/en/dev-tools/cli/index.html`
+- :book: [Databricks | Install or update the Databricks CLI](https://docs.databricks.com/en/dev-tools/cli/install.html#)
+
+{/* More detailed installation instructions, including how to authenticate with the CLI, can be found on the [Databricks CLI page](../toolstips/databricks-cli.md). */}
+
+### AWS CLI (v2)
+
+> The AWS Command Line Interface (AWS CLI) is a unified tool to manage your AWS services.
+
+- :link: `https://aws.amazon.com/cli/`
+- :book: [AWS Docs | Install/Update the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+
+<Tabs queryString="os">
+
+<TabItem value="linux" label="Linux">
+  Follow the [official installation instructions for AWS CLI
+  v2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) on
+  **Linux**.
+</TabItem>
+
+<TabItem value="macos" label="macOS">
+  Follow the [official installation instructions for AWS CLI
+  v2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) on
+  **macOS**.
+</TabItem>
+
+<TabItem value="windows" label="Windows">
+The official installation instructions require administrator permissions to install AWS CLI v2. However, [a workaround is available](https://github.com/aws/aws-cli/issues/4633#issuecomment-1199031494):
+
+```powershell
+# Define the AWS CLI MSI URL and local download path
+$MSI_URL = "https://awscli.amazonaws.com/AWSCLIV2.msi"
+$TMP_MSI = "$env:TEMP\AWSCLIV2.msi"
+
+# Download the AWS CLI MSI installer
+Invoke-WebRequest -Uri $MSI_URL -OutFile $TMP_MSI
+
+# Run the installation with msiexec
+msiexec.exe /a $TMP_MSI /qb TARGETDIR=$env:LOCALAPPDATA
+Start-Process msiexec.exe -ArgumentList "/a", "https://awscli.amazonaws.com/AWSCLIV2.msi", "/qb", "TARGETDIR=%LOCALAPPDATA%", "/quiet" -Wait
+
+# Verify that the installation was successful
+aws --version
+```
+
+</TabItem>
+
+</Tabs>
+
+## Containerization Tools
+
+### Windows Subsystem for Linux (WSL2)
+
+> Windows Subsystem for Linux (WSL) lets developers run a GNU/Linux environment -- including most command-line tools, utilities, and applications -- directly on Windows, unmodified, without the overhead of a traditional virtual machine or dual-boot setup.
+
+Installation instructions can be found at .
+
+- :lock: Requires elevated privileges to install
+- :book: `https://learn.microsoft.com/en-us/windows/wsl/`
+
+:::note
+
+Prerequisites are required before installation:
+
+- You must enable `Hyper-V`, `Windows Hypervisor Platform`, and `Windows Subsystem for Linux` in the control panel.
+- Navigate to the control panel and select `Programs > Programs and Features`
+- On the left-hand side, click `Turn Windows features on or off`
+- Enter your Administrator credentials
+- Check the boxes to the left of each program you want to enable. Click `OK`
+- Reboot your machine
+
+:::
+
+:::tip
+
+When setting up your user account in a newly installed Linux distribution, name the user `{auid}-{distro}`, such as `jdoe-ubuntu`. See the [Best practices for setting up a WSL development environment](https://learn.microsoft.com/en-us/windows/wsl/setup/environment#set-up-your-linux-username-and-password) guide to learn more.
+
+:::
+
+```powershell
+wsl --install
+```
+
+:::note
+
+The above command only works if WSL is not installed at all. If you run `wsl --install` and see the WSL help text, please try running `wsl --list --online` to see a list of available distros and run `wsl --install -d ubuntu` to install the Ubuntu distribution.
+
+:::
+
+#### Troubleshooting
+
+If you experience the catastrophic failure error:
+
+1. Open PowerShell as an administrator.
+2. Run `netsh winsock reset`.
+3. Restart your system.
+4. This will take a several minutes while components are downloaded. A restart is required after the installation completes.
+5. When you first start WSL2 you will be prompted to created a new user for the installed Linux distribution. Ensure that you use a short lowercase username and a memorable password.
+
+To update WSL2, run `wsl --update` then restart your computer.
+
+##### Using WSL2 with a VPN
+
+Some VPNs can introduce networking issues with WSL2, such as Cisco AnyConnect. To use WSL2 while connected to your VPN, you must:
+
+- Enable mirrored networking mode
+- Enable DNS tunneling
+- Disable DNS proxy
+
+These can be set using the settings menu under "Networking" or in your `.wslconfig` file located in your home directory. Restart WSL2 after changing any configurations to ensure they take effect.
+
+```ini
+[wsl2]
+networkingMode=mirrored
+dnsTunneling=true
+dnsProxy=false
+```
+
+### Rancher Desktop
+
+> Rancher Desktop by SUSE is an open-source application that provides all the essentials to work with containers and Kubernetes on the desktop.
+
+- :link: `https://rancherdesktop.io/`
+- :book: `https://docs.rancherdesktop.io/getting-started/installation`
+
+:::info
+
+On Windows, [WSL2](#windows-subsystem-for-linux-wsl2) is a prerequisite for Rancher Desktop.
+
+:::
+
+During installation, select `dockerd (moby)` as the container engine.
+
+<Tabs queryString="os">
+<TabItem value="windows" label="Windows">
+```powershell
+winget install -e --id suse.RancherDesktop
+```
+</TabItem>
+
+<TabItem value="macos" label="macOS">
+  ```bash brew install --cask rancher ```
+</TabItem>
+
+<TabItem value="debian" label="Linux (Debian)">
+```bash
+curl -s https://download.opensuse.org/repositories/isv:/Rancher:/stable/deb/Release.key | gpg --dearmor | sudo dd status=none of=/usr/share/keyrings/isv-rancher-stable-archive-keyring.gpg
+echo 'deb [signed-by=/usr/share/keyrings/isv-rancher-stable-archive-keyring.gpg] https://download.opensuse.org/repositories/isv:/Rancher:/stable/deb/ ./' | sudo dd status=none of=/etc/apt/sources.list.d/isv-rancher-stable.list
+apt-get update && apt-get -y install rancher-desktop
+```
+</TabItem>
+</Tabs>
+
+For compatibility with a Cisco VPN (AnyConnect), enable the [_experimental_ Network Tunneling feature](https://docs.rancherdesktop.io/ui/preferences/wsl/network/#networking-tunnel):
+
+```bash
+rdctl set --experimental.virtual-machine.networking-tunnel=true
+```
+
+### K9s
+
+> K9s is a terminal based UI to interact with your Kubernetes clusters.
+
+- :link: `https://k9scli.io/` `https://github.com/derailed/k9s`
+- :book: `https://k9scli.io/topics/install/`
+
+<Tabs queryString="os">
+<TabItem value="windows" label="Windows">
+```powershell
+winget install --id Derailed.k9s --source winget
+```
+</TabItem>
+
+<TabItem value="macos" label="macOS">
+  ```bash brew install derailed/k9s/k9s ```
+</TabItem>
+
+<TabItem value="debian" label="Linux (Debian)">
+```bash
+wget https://github.com/derailed/k9s/releases/download/v0.32.7/k9s_linux_amd64.deb
+apt-get install ./k9s_linux_amd64.deb
+```
+</TabItem>
+</Tabs>
+
+## Other Applications
+
+### DuckDB
+
+DuckDB is an in-process SQL OLAP database management system.
+
+- :link: `https://duckdb.org/`
+- :book: `https://duckdb.org/docs/installation/`
+
+<Tabs queryString="os">
+<TabItem value="windows" label="Windows">
+```powershell
+winget install -e --id DuckDB.cli
+```
+</TabItem>
+
+<TabItem value="macos" label="macOS">
+  ```bash brew install duckdb
+</TabItem>
+
+<TabItem value="debian" label="Linux (Debian)">
+```bash
+wget https://github.com/duckdb/duckdb/releases/download/v1.1.3/duckdb_cli-linux-amd64.zip
+```
+</TabItem>
+</Tabs>
+
+### dbt Core
+
+> [dbt](https://www.getdbt.com/) enables data analysts and engineers to transform their data using the same practices that software engineers use to build applications. [dbt Core](https://github.com/dbt-labs/dbt-core) is an open sourced project where you can develop from the command line and run your dbt project.
+
+- :link: `https://github.com/dbt-labs/dbt-core`
+- :book: `https://docs.getdbt.com/docs/core/installation-overview`
+
+### WinSCP
+
+> WinSCP is a popular SFTP client and FTP client for Microsoft Windows!
+
+- :link: `https://winscp.net/eng/index.php`
+- :book: `https://winscp.net/eng/docs/guide_install`
+
+Follow the official installation instructions. When prompted, select the **Install for me only** option.
+
+:::warning
+
+On Windows, _do not use_ the WinSCP package distribution from Winget. As of writing, this distribution is not maintained.
+
+:::
+
+---
+
+## Appendix
+
+### Configuring AWS CLI
+
+Set the [AWS region variable](https://docs.aws.amazon.com/sdkref/latest/guide/feature-region.html) in your `.aws/config` file:
+
+```dotenv
+[default]
+region = us-east-1
+```
+
+### Using AWS and K9s
+
+K9s requires an access key to access an AWS EKS cluster. Use short-term access keys as a security best practice.
+
+K9s uses your kubeconfig file to organize cluster access[^1][^2].
+
+[^1]: [Organizing Cluster Access Using kubeconfig files](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/)
+
+[^2]: [Configure Access to Multiple Clusters](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/)
+
+Update your kubeconfig file with the context of the cluster you want to view:
+
+```bash
+aws eks update-kubeconfig --name {cluster-name}
+```
+
+Validate the correct context is active by running `kubectl config current-context`. The ARN of the current cluster will be shown.
+
+#### Common K9s command reference
+
+See `https://k9scli.io/topics/commands/` for more information.
+
+- View namespaces with `:ns`
+- View nodes with `:nodes`
+- View pods with `:pods`
