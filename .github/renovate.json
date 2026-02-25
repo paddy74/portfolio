@@ -27,14 +27,37 @@
 
   "packageRules": [
     {
-      "matchDepTypes": ["dev"],
-      "groupName": "dev-dependencies",
-      "groupSlug": "dev-deps"
+      "groupName": "pre-commit hooks",
+      "groupSlug": "precommit-hooks",
+      "matchManagers": ["pre-commit"]
     },
     {
-      "matchManagers": ["pep621"],
+      "groupName": "devDependencies",
+      "groupSlug": "dev-deps",
+      "matchManagers": ["pnpm"],
+      "matchDepTypes": ["devDependencies"]
+    },
+    {
+      "matchManagers": ["pnpm"],
       "matchDepTypes": ["dependencies"],
+      "matchUpdateTypes": ["major"],
       "semanticCommitType": "build"
+    },
+    {
+      "groupName": "dependencies (minor)",
+      "groupSlug": "deps-minor",
+      "matchManagers": ["pnpm"],
+      "matchDepTypes": ["dependencies"],
+      "matchUpdateTypes": ["minor"],
+      "semanticCommitType": "build"
+    },
+    {
+      "groupName": "dependencies (patch)",
+      "groupSlug": "deps-patch",
+      "matchManagers": ["pnpm"],
+      "matchDepTypes": ["dependencies"],
+      "matchUpdateTypes": ["patch"],
+      "semanticCommitType": "fix"
     }
   ]
 }
