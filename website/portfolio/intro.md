@@ -15,9 +15,9 @@ Click [HERE](/files/PatrickYoung-Resume.pdf) to download my resume, which contai
 
 Software Engineer and Technical Lead/Architect with 6+ years of experience leading data analytics modernization efforts in government cloud environments. Proven track record of building platforms, leading new teams, and delivering scalable data-driven products. I aspire to help organizations unlock the value of their data by designing innovative long-term platforms and cultivating self-sustaining teams of experts.
 
-- LinkedIn:// patyx
-- GitHub:// paddy74
-- StackOverflow:// patyx
+- [LinkedIn:// patyx](https://www.linkedin.com/in/patyx/)
+- [GitHub:// paddy74](https://github.com/paddy74)
+- [StackOverflow:// patyx](https://stackoverflow.com/users/7706917/patyx)
 
 ## Education
 
@@ -27,7 +27,7 @@ Software Engineer and Technical Lead/Architect with 6+ years of experience leadi
 
 ## Certifications
 
-- **Security Clearance**: Top Secret/SCI (inactive)
+- **Security Clearance**: Secret (current); TS/SCI Eligible (last active 07/2023)
 - **Azure Fundamentals**: AZ-900
 - **ICAgile**: DevOps
 
