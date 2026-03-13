@@ -169,13 +169,13 @@ Host gitserver.example.com
 
 ### Add the SSH key to your account
 
-Add the public SSH key to your account on the remote Git server. We recommend naming your key using your username and the name or ID of your client system, such as `ptyng-AAAAA0000000000` or `AAAAA0000000000.auth.example.com`.
+Add the public SSH key to your account on the remote Git server. We recommend naming your key using your username and the name or ID of your client system, such as `jhdoe-AAAAA0000000000` or `AAAAA0000000000.auth.example.com`.
 
 ### Verify that you can connect
 
 Verify that you can connect to the remote Git server by opening a terminal and running `ssh -T git@gitserver.example.com`. You should see a message like _Welcome to GitServer, `@username`!_.
 
-## GPG Signing Key
+## Sign Git Commits with GPG
 
 You can sign commits individually or configure your Git client to sign commits by-default:
 
@@ -220,7 +220,7 @@ This guide will use the recommended key pair and encryption options.
    gpg --expert --full-gen-key
    ```
 
-2. Select the `9th` option. This will create an ECC (elliptic curve cryptogrpahy) public/private keypair and an ECC signing key.
+2. Select the `9th` option. This will create an ECC (elliptic curve cryptography) public/private keypair and an ECC signing key.
 
 3. For curve, select the `1st` option to create ED25519 keys.
 
@@ -299,3 +299,54 @@ The following instructions were copied from [GitLab | GPG keys - Associate your 
    [includeIf "gitdir:~/Projects/example-project/"]
        path = ~/.gitconfigs/.gitconfig.example
    ```
+
+## Credential Caching
+
+To stop Git from prompting for you password everytime you sign a commit or use `git push`, `git pull`, or `git fetch`, you can configure a credential helper to cache your credentials.
+
+### SSH Agent Credential Caching
+
+Use the `ssh-agent` to avoid entering your SSH passphrase every time you use `git push`, `git pull`, or `git fetch`, as described at [Configuring SSH Agent Caching](./setup-ssh-caching.mdx)
+
+### GPG Agent Credential Caching
+
+Use the `gpg-agent` to avoid entering your GPG passphrase every time you sign a commit, as described at [Configuring GPG Agent Caching](./setup-gpg-caching.md).
+
+### Git Credential Cache (HTTPS)
+
+Use the [Git Credential Cache](https://git-scm.com/doc/credential-helpers) to store credentials temporarily in memory or the system keyring. This is the simplest and most secure option for short-term use. However, it _only_ works for `https` and does not work for `ssh` or personal access tokens[^6].
+
+[^6]: ["git-credential-cache is inherently unsuitable for persistent storage of personal access tokens."](https://git-scm.com/docs/git-credential-cache#_personal_access_tokens)
+
+<Tabs queryString="os">
+
+<TabItem value="windows" label="Windows">
+```powershell
+git config --global credential.helper wincred
+```
+
+If you are using **Git for Windows** (not recommended), use:
+
+```powershell
+git config --global credential.helper manager
+```
+</TabItem>
+
+<TabItem value="macos" label="macOS">
+```bash
+git config --global credential.helper osxkeychain
+```
+</TabItem>
+
+<TabItem value="linux" label="Linux">
+```bash
+# store credentials temporarily in memory
+git config --global credential.helper cache
+
+# or...
+# store credentials in the system keyring
+git config --global credential.helper libsecret
+```
+</TabItem>
+
+</Tabs>
