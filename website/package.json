@@ -19,7 +19,7 @@
     "format": "pnpm exec prettier . --write --config ../.prettierrc --ignore-path ../.prettierignore",
     "npm-update": "npx npm-check-updates -u",
     "init": "npm install --global corepack@latest && corepack enable pnpm && corepack prepare pnpm@latest-10 --activate && pnpm install",
-    "update-deps": "pnpm install && pnpm update --latest && pnpm audit --fix && pnpm install && pnpm dedupe",
+    "update-deps": "corepack use pnpm@latest && pnpm install && pnpm update --latest && pnpm audit --fix && pnpm install && pnpm dedupe",
     "clean-install": "pnpm store prune && rm -rf node_modules pnpm-lock.yaml && pnpm install"
   },
   "dependencies": {
@@ -71,5 +71,6 @@
   },
   "volta": {
     "node": "24.14.0"
-  }
+  },
+  "packageManager": "pnpm@10.32.1+sha512.a706938f0e89ac1456b6563eab4edf1d1faf3368d1191fc5c59790e96dc918e4456ab2e67d613de1043d2e8c81f87303e6b40d4ffeca9df15ef1ad567348f2be"
 }
