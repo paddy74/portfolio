@@ -25,7 +25,7 @@ This handbook is built using [Docusaurus](https://docusaurus.io/); the [official
   - Markdown: [markdownlint](https://github.com/DavidAnson/vscode-markdownlint/)
 - **Code Formatter**:
   - [Prettier](https://prettier.io/)
-  - Markdown: [Markdown All in One](yzhang.markdown-all-in-one)
+  - Markdown: [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
 - **Pre-Commit Hooks**: [prek](https://prek.j178.dev/)
 
 ```bash

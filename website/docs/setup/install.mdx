@@ -5,8 +5,8 @@ tags:
   - guide
 ---
 
-import TabItem from "@theme/TabItem";
-import Tabs from "@theme/Tabs";
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
 
 # Personal Workstation Setup
 
@@ -39,12 +39,6 @@ Therefore, this section defines the following hierarchy of installation approach
 Initial setup involves installing and configuring the package manager used throughout the rest of this article. On Windows, this is [WinGet](#winget) and on macOS this is [Homebrew](#homebrew). The package manager for Linux-based operating systems varies depending on its distribution and should be pre-installed; usually APT, Pacman, RPM, Flatpak, or Snap.
 
 <Tabs queryString="os">
-<TabItem value="macos" label="macOS">
-### Homebrew
-
-Follow the official installation instructions at `https://brew.sh/`.
-
-</TabItem>
 
 <TabItem value="windows" label="Windows">
 
@@ -90,6 +84,13 @@ winget install -e --id Microsoft.WindowsTerminal
 ```
 
 </TabItem>
+
+<TabItem value="macos" label="macOS">
+### Homebrew
+
+Follow the official installation instructions at `https://brew.sh/`.
+</TabItem>
+
 </Tabs>
 
 ## Text Editors and IDEs
@@ -109,7 +110,7 @@ Sublime Text is a extendable cross-platform text editor.
   ```powershell winget install -e --id SublimeHQ.SublimeText.4 ```
 </TabItem>
 
-<TabItem value="debian" label="Linux (Debian)">
+<TabItem value="linux" label="Linux (Debian)">
 
 ```bash
 wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/sublimehq-archive.gpg > /dev/null
@@ -265,18 +266,6 @@ winget install -e --id EclipseAdoptium.Temurin.25.JDK`
 
 <Tabs queryString="os">
 
-<TabItem value="linux" label="Linux">
-  Follow the [official installation instructions for AWS CLI
-  v2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) on
-  **Linux**.
-</TabItem>
-
-<TabItem value="macos" label="macOS">
-  Follow the [official installation instructions for AWS CLI
-  v2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) on
-  **macOS**.
-</TabItem>
-
 <TabItem value="windows" label="Windows">
 The official installation instructions require administrator permissions to install AWS CLI v2. However, [a workaround is available](https://github.com/aws/aws-cli/issues/4633#issuecomment-1199031494):
 
@@ -295,7 +284,16 @@ Start-Process msiexec.exe -ArgumentList "/a", "https://awscli.amazonaws.com/AWSC
 # Verify that the installation was successful
 aws --version
 ```
+</TabItem>
 
+<TabItem value="linux" label="Linux">
+Follow the [official installation instructions for AWS CLI v2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) on **Linux**.
+</TabItem>
+
+<TabItem value="macos" label="macOS">
+Follow the [official installation instructions for AWS CLI
+v2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) on
+**macOS**.
 </TabItem>
 
 </Tabs>
@@ -395,7 +393,7 @@ winget install -e --id suse.RancherDesktop
   ```bash brew install --cask rancher ```
 </TabItem>
 
-<TabItem value="debian" label="Linux (Debian)">
+<TabItem value="linux" label="Linux (Debian)">
 ```bash
 curl -s https://download.opensuse.org/repositories/isv:/Rancher:/stable/deb/Release.key | gpg --dearmor | sudo dd status=none of=/usr/share/keyrings/isv-rancher-stable-archive-keyring.gpg
 echo 'deb [signed-by=/usr/share/keyrings/isv-rancher-stable-archive-keyring.gpg] https://download.opensuse.org/repositories/isv:/Rancher:/stable/deb/ ./' | sudo dd status=none of=/etc/apt/sources.list.d/isv-rancher-stable.list
@@ -428,7 +426,7 @@ winget install --id Derailed.k9s --source winget
   ```bash brew install derailed/k9s/k9s ```
 </TabItem>
 
-<TabItem value="debian" label="Linux (Debian)">
+<TabItem value="linux" label="Linux (Debian)">
 ```bash
 wget https://github.com/derailed/k9s/releases/download/v0.32.7/k9s_linux_amd64.deb
 apt-get install ./k9s_linux_amd64.deb
@@ -453,10 +451,12 @@ winget install -e --id DuckDB.cli
 </TabItem>
 
 <TabItem value="macos" label="macOS">
-  ```bash brew install duckdb
+```bash
+bash brew install duckdb
+```
 </TabItem>
 
-<TabItem value="debian" label="Linux (Debian)">
+<TabItem value="linux" label="Linux (Debian)">
 ```bash
 wget https://github.com/duckdb/duckdb/releases/download/v1.1.3/duckdb_cli-linux-amd64.zip
 ```

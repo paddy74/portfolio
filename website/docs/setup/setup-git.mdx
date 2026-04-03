@@ -5,8 +5,8 @@ tags:
   - guide
 ---
 
-import TabItem from "@theme/TabItem";
-import Tabs from "@theme/Tabs";
+import TabItem from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
 
 # Configuring Git
 
@@ -248,12 +248,12 @@ The following instructions were copied from [GitLab | GPG keys - Associate your 
 >
 > 2. Copy the GPG private key ID that starts with `sec`. In this example, the private key ID is `00000A00AA000A0A`:
 >
-> ```plaintext
+>    ```plaintext
 >    sec   ed25519/00000A00AA000A0A 2017-08-18 [SC] [expires: 2019-08-18]
 >          D5E4F29F3275DC0CDA8FFC8730F2B65B9246B6CA
 >    uid                   [ultimate] First Last (Comment) <your_email>
 >    ssb   ed25519/A0AAA0000A0000A0 2017-08-18 [E]
-> ```
+>    ```
 >
 > 3. Run this command to configure Git to sign your commits with your key, replacing `<KEY ID>` with your GPG key ID:
 >
