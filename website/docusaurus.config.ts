@@ -13,6 +13,7 @@ const config: Config = {
   favicon: "img/favicon.ico",
 
   future: {
+    //faster: true,
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
   },
 

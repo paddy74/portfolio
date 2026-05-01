@@ -14,12 +14,12 @@ This document provides a structured comparison of three leading Node.js package 
 
 ## Feature Comparison
 
-| Feature | `npm` | Yarn | pnpm |
-| --- | --- | --- | --- |
-| **Cross-Platform** | Yes | Yes | Yes |
-| **Deterministic** | `package-lock.json` | `yarn.lock`, `.pnp.cjs` | Strict content-addressable store + `pnpm-lock.yaml` |
-| **Performance** | Moderate (I/O bound) | Moderate | High |
-| **License** | Artistic License 2.0 | BSD 2-Clause & BSD 3-Clause | MIT |
+| Feature            | `npm`                | Yarn                        | pnpm                                                |
+| ------------------ | -------------------- | --------------------------- | --------------------------------------------------- |
+| **Cross-Platform** | Yes                  | Yes                         | Yes                                                 |
+| **Deterministic**  | `package-lock.json`  | `yarn.lock`, `.pnp.cjs`     | Strict content-addressable store + `pnpm-lock.yaml` |
+| **Performance**    | Moderate (I/O bound) | Moderate                    | High                                                |
+| **License**        | Artistic License 2.0 | BSD 2-Clause & BSD 3-Clause | MIT                                                 |
 
 ## Recommendations
 
@@ -119,11 +119,6 @@ npm install --global corepack@latest
 ### pnpm Installation
 
 Official instructions can be found in the [pnpm Installation Guide](https://pnpm.io/installation).
-
-```bash
-npm install --global corepack@latest
-corepack enable pnpm
-```
 
 ### pnpm Key Features
 
