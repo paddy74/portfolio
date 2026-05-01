@@ -91,7 +91,7 @@ alias gco='git checkout'
 alias gl='git pull --prune'
 alias gca='git commit -a'
 alias gp='git push origin HEAD'
-alias www='cd ~/Workspace/Repos/idas-handbook'
+alias www='cd ~/Projects/example-project'
 alias s='www;subl .;gco master;gl'
 ```
 

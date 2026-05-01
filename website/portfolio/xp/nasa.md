@@ -8,7 +8,7 @@
   - Department: Data & Analytics Services
 - Grade: GS-14
 - Title: Information Technology Specialist (2210)
-- Start/End Date: Aug 2023 &mdash; July 2025
+- Start/End Date: Aug 2023 &ndash; July 2025
 - Location: Hampton, VA (NASA Langely)
   - Workplace Type: Remote, but on-site for some meetings/events
 

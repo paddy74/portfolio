@@ -62,6 +62,17 @@ Use the below regular expressions to search for non-compliant Markdown links.
 
 :::
 
+## Use Unicode for Special Characters
+
+Use HTML character entity references to improve accessibility and readability in source code and avoid conflicts with HTML syntax or non-UTF encoding.
+
+The below table lists the characters to replace with their Unicode counterparts when following this Markdown Style Guide. A full list of characters and their counterparts can be found at [W3C | HTML Unicode General Punctuation](https://www.w3schools.com/charsets/ref_utf_punctuation.asp).
+
+| Character | (Dec)imal | (Hex)adecimal | HTML entity | Name    |
+| --------- | --------- | ------------- | ----------- | ------- |
+| &ndash;   | 8211      | 2013          | `&ndash;`   | En Dash |
+| &mdash;   | 8212      | 2014          | `&mdash;`   | Em Dash |
+
 ## Markdown Editors
 
 Use the editors available in your internal development or code repository platform (e.g., GitHub), one of the below editors, or your preferred code/text editor to write in Markdown.

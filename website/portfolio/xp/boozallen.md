@@ -7,7 +7,7 @@
 - Employer: Booz Allen Hamilton
 - Grade: Senior Consultant (start); Associate (end)
 - Title: Full-Stack Developer
-- Start/End Date: Sept 2020 &mdash; Aug 2023
+- Start/End Date: Sept 2020 &ndash; Aug 2023
 - Location: Newport News, VA (Fort Eustis)
   - Workplace Type: Remote
 

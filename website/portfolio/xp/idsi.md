@@ -7,7 +7,7 @@
 - Employer: Intelligent Decision Systems, Inc.
 - Grade: Junior
 - Title: Full-Stack Developer
-- Start/End Date: Jan 2019 &mdash; Sept 2020
+- Start/End Date: Jan 2019 &ndash; Sept 2020
 - Location: Newport News, VA
   - Workplace Type: On-Site until COVID in early 2020, then remote
 

@@ -1,6 +1,6 @@
 ---
 tags:
-  - guide
+  - styleguide
 ---
 
 # Handbook Style Guide
