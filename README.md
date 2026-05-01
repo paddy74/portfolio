@@ -11,7 +11,7 @@ This is my personal website portfolio -- including my resume, project highlights
   - Markdown: [markdownlint](https://github.com/DavidAnson/vscode-markdownlint/)
 - **Code Formatter**:
   - [Prettier](https://prettier.io/)
-  - Markdown: [Markdown All in One](yzhang.markdown-all-in-one)
+  - Markdown: [Markdown All in One]([yzhang.markdown-all-in-one](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one))
 - **Pre-Commit Hooks**: [prek](https://prek.j178.dev/)
 
 You must [install pnpm](https://pnpm.io/installation) before continuing if it is not already on your system.
@@ -52,6 +52,4 @@ For major changes, open an issue first to discuss your proposal.
 
 ## Contact
 
-Questions or issues regarding this project's source code or my documentation? Please open an issue on the repository's issue tracker.
-
-Looking to work with me? Visit [my online portfolio](https://work.youngweb.site/) for contact information.
+Questions or issues regarding this project's source code or its documentation? Please open an issue on the repository's issue tracker.

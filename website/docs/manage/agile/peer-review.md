@@ -63,17 +63,18 @@ Team members will use (PRs) to make changes to the code. As a developer makes ch
 
 #### Submitting a (PR)
 
-1. Ensure that Git is configured according to [the Git Version Control Standards](../../engineer/standards/git.md).
+<!-- TODO: add missing link target -->
+1. Ensure that Git is configured according to [the Git Version Control Standards](./).
 2. Clone the repository you plan on modifying
 3. Checkout the `feat/` or `develop` branch, as applicable
-4. Create a new branch off the `feat/` or `develop` branch, as applicable, and use a good name that complies with [the branch naming conventions](../../engineer/standards/git.md#branch-naming-conventions) (e.g. `bug#139-lost-page`).
-5. Perform the work within the scope of the associated work-item or ad-hoc task. Follow the [commit message standards](../../engineer/standards/git.md#git-commit-message-standards) when making commits.
+4. Create a new branch off the `feat/` or `develop` branch, as applicable, and use a good name that complies with <!-- TODO: add missing link target --> [the branch naming conventions](/) (e.g. `bug#139-lost-page`).
+5. Perform the work within the scope of the associated work-item or ad-hoc task. Follow the <!-- TODO: add missing link target --> [commit message standards](/) when making commits.
 6. Test your changes locally to make sure it does what you intend it to do.
 7. If appropriate, test your changes in the project's "development" environment. For shared "development" environments, first notify other team members to avoid conflicts with changes they may also be testing in the "development" environment.
-8. Push your new branch to the upstream repository. Check that you are pushing changes with the correct account and your work is signed with a GPG signing key according to [the Git Version Control Standards](../../engineer/standards/git.md).
+8. Push your new branch to the upstream repository. Check that you are pushing changes with the correct account and your work is signed with a GPG signing key according to <!-- TODO: add missing link target --> [the Git Version Control Standards](./).
 9. Navigate to the upstream repository's user interface.
 10. Select the button **New (PR)**.
-11. Set the appropriate source and target branches, select and fill out the right (or default) PR template. The title must follow [the (PR) conventions](../../engineer/standards/git.md#merge-request-conventions) (e.g., `[patch]: restrict lost page access to admins`).
+11. Set the appropriate source and target branches, select and fill out the right (or default) PR template. The title must follow <!-- TODO: add missing link target --> [the (PR) conventions](/) (e.g., `patch: restrict lost page access to admins`).
 12. Select the appropriate assignees and reviewers for the PR's peer review.
 13. Link to PR to its associated work-item, if there is one.
 14. Click **Create** to create the (PR).

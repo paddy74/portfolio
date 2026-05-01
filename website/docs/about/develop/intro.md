@@ -30,12 +30,8 @@ This handbook is built using [Docusaurus](https://docusaurus.io/); the [official
 
 ```bash
 cd website
-# Install pnpm with corepack and run pnpm install
-npm run init
 # shamefully-hoist to handle issues with docusaurus-lunr-search
 pnpm install --shamefully-hoist
-
-# Start a local instance
 pnpm run start
 
 # Type check, lint, format
@@ -52,7 +48,7 @@ prek install
 Contributions are welcome -- where appropriate for correcting things like spelling errors, bugs, or suboptimal code/configurations. To get started:
 
 1. Fork the repository and create a new branch.
-2. Install development dependencies (see the [developer guide](#developer-guide)).
+2. Install [development dependencies](#getting-started).
 3. Add or update tests together with your change.
 4. Run the full test, linting, and formatting suite locally.
 5. Submit a pull request describing your changes and referencing any relevant issues.
@@ -61,6 +57,4 @@ For major changes, open an issue first to discuss your proposal.
 
 ## Contact
 
-Questions or issues regarding this project's source code or my documentation? Please open an issue on the repository's issue tracker.
-
-Looking to work with me? Visit [my online portfolio](https://work.youngweb.site/) for contact information.
+Questions or issues regarding this project's source code or its documentation? Please open an issue on the repository's issue tracker.

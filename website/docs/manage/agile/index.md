@@ -276,11 +276,13 @@ Wherever possible and appropriate all development items will be worked on local 
 
 Developer notes should be written and attached to their assigned and active work-items at the end of each day regarding the progress made throughout the day on the work-item. When work is submitted for review or approval, these notes should include relevant versions of software applications, scripts, and artifacts used in the final satisfaction of the acceptance criteria.
 
-The team's version control standards can be found at [the Git Version Control Standards](../../engineer/standards/git.md).
+<!-- TODO: add missing link target -->
+The team's version control standards can be found at [the Git Version Control Standards](/).
 
 ## Peer Review of Code/Changes
 
-All changes to project source code and documentation will be subject to the team's [Peer Review Process](./peer-review.md) policy.
+<!-- TODO: add missing link target -->
+All changes to project source code and documentation will be subject to the team's [Peer Review Process](/) policy.
 
 ## Technical Debt Policy
 
