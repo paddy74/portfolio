@@ -2,7 +2,7 @@
 
 ## Reporting a Vulnerability
 
-If you find an issue that may be security relevant, please [Report a security vulnerability](https://github.com/paddy74/paddy74.github.io/security/advisories/new)
+If you find an issue that may be security relevant, please [Report a security vulnerability](https://github.com/paddy74/portfolio/security/advisories/new)
 on GitHub.
 
 ## Supported Versions

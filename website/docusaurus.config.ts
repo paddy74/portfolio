@@ -23,7 +23,7 @@ const config: Config = {
 
   // GitHub pages deployment config
   organizationName: "paddy74", // GitHub org/user name
-  projectName: "paddy74.github.io", // repo name
+  projectName: "portfolio", // repo name
   deploymentBranch: "main",
 
   // html metadata
@@ -61,7 +61,7 @@ const config: Config = {
         docs: {
           // id omitted, default instance
           sidebarPath: "./sidebars.ts",
-          editUrl: "https://github.com/paddy74/paddy74.github.io/tree/main/website/",
+          editUrl: "https://github.com/paddy74/portfolio/tree/main/website/",
           path: "docs",
           routeBasePath: "docs",
           showLastUpdateAuthor: true,
@@ -75,7 +75,7 @@ const config: Config = {
             type: ["rss", "atom"],
             xslt: true,
           },
-          editUrl: "https://github.com/paddy74/paddy74.github.io/tree/main/website/",
+          editUrl: "https://github.com/paddy74/portfolio/tree/main/website/",
           onInlineTags: "warn",
           onInlineAuthors: "warn",
           onUntruncatedBlogPosts: "ignore", // "warn",
@@ -121,7 +121,7 @@ const config: Config = {
 
         // Right navbar
         {
-          href: "https://github.com/paddy74/paddy74.github.io",
+          href: "https://github.com/paddy74/portfolio",
           label: "GitHub",
           position: "right",
         },

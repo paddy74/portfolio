@@ -96,7 +96,7 @@ Use the editors available in your internal development or code repository platfo
 
 #### Visual Studio Code
 
-I recommend Visual Studio Code as your code editor. To edit Markdown files with VS Code, start with the [Markdown and Visual Studio Code guide](https://code.visualstudio.com/docs/languages/markdown) and this handbook's recommended [extensions](https://github.com/paddy74/paddy74.github.io/blob/main/.vscode/extensions.jsonc) and [settings](https://github.com/paddy74/paddy74.github.io/blob/main/.vscode/settings.jsonc).
+I recommend Visual Studio Code as your code editor. To edit Markdown files with VS Code, start with the [Markdown and Visual Studio Code guide](https://code.visualstudio.com/docs/languages/markdown) and this handbook's recommended [extensions](https://github.com/paddy74/portfolio/blob/main/.vscode/extensions.jsonc) and [settings](https://github.com/paddy74/portfolio/blob/main/.vscode/settings.jsonc).
 
 <!-- Additional information about configuring VSCode is covered by [the VSCode configuration guide](../../setup/setup-vscode.mdx). -->
 

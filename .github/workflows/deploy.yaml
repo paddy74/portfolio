@@ -27,7 +27,7 @@ jobs:
   deploy:
     # on release, push to main, or manual dispatch
     if: >-
-      github.repository == 'paddy74/paddy74.github.io' && (
+      github.repository == 'paddy74/portfolio' && (
         (
           github.event_name == 'release' &&
           github.event.release.prerelease == false &&
