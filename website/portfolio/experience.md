@@ -33,10 +33,12 @@ timeline
         January 2026 : ❌ Voluntarily reisgned under the Deferred Resignation Program
 ```
 
+---
+
 ## NASA
 
 - National Aeronautics and Space Administration (NASA)
-- Aug 2023 &mdash; July 2025
+- July 2023 &mdash; Jan 2025
 - Hampton, VA (NASA Langely)
 
 As the Technical Lead of NASA Data & Analytics Services, I led the architecture, implementation, and adoption of NASA's enterprise data platforms to drive Agency-wide data modernization, data governance, scalable data analytics, and AI development in business- and mission-critical environments.
@@ -46,8 +48,8 @@ As the Technical Lead of NASA Data & Analytics Services, I led the architecture,
 ## Booz Allen Hamilton
 
 - Booz Allen Hamilton
-- Sept 2020 &mdash; Aug 2023
-- Newport News, VA (Fort Eustis)
+- Sept 2020 &mdash; July 2023
+- Fort Eustis, Hampton, VA
 
 As a Senior Software Engineer and Deputy Project Manager supporting Army T2COM G2, I developed full-stack data management, discovery, analytics, and visualization systems and threat-actor network analysis tools, accelerating the creation of training and doctrine research publications.
 
@@ -59,7 +61,7 @@ As a Senior Software Engineer and Deputy Project Manager supporting Army T2COM G
 - Jan 2019 &mdash; Sept 2020
 - Newport News, VA
 
-As a Full-Stack Developer and Machine Learning Engineer, I developed full-stack data discovery applications and text analytics models for T2COM G2's Training & Doctrine Research Platform, improving search relevance, data trust, and analyst productivity across research and publication workflows.
+As a Full-Stack Developer and Machine Learning Engineer, I developed full-stack data discovery applications and text analytics models for T2COM G2's Publication Management Platform, improving search relevance, data trust, and analyst productivity across research and publication workflows.
 
 [:right_arrow: Learn More](./xp/idsi.md)
 

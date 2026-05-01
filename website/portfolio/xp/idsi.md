@@ -17,7 +17,7 @@ My first full-time job after graduating University was with Intelligent Decision
 
 ## Job Description
 
-As a **Full-Stack Developer** and **Machine Learning Engineer**, I developed full-stack data discovery applications and text analytics models for T2COM G2's Training & Doctrine Research Platform, improving search relevance, data trust, and analyst productivity across research and publication workflows.
+As a **Full-Stack Developer** and **Machine Learning Engineer**, I developed full-stack data discovery applications and text analytics models for T2COM G2's Publication Management Platform, improving search relevance, data trust, and analyst productivity across research and publication workflows.
 
 - Built full-stack web applications and zero-trust microservices using ReactJS, C++, Python, Java, FastAPI, and SQL Server, delivering REST inference endpoints for custom NLP models and accelerating search and data-discovery tasks.
 
