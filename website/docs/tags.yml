@@ -1,0 +1,47 @@
+agile:
+  label: "Agile Development"
+
+databricks:
+  label: "Databricks"
+
+deprecated:
+  label: "Deprecated"
+
+docusaurus:
+  label: "Docusaurus"
+
+draft:
+  label: "draft"
+
+example:
+  label: "Example"
+
+git:
+  label: "Git"
+
+gpg:
+  label: "GPG"
+
+guide:
+  label: "Guide"
+
+markdown:
+  label: "Markdown"
+
+nodejs:
+  label: "NodeJS"
+
+python:
+  label: "Python"
+
+ssh:
+  label: "SSH"
+
+standards:
+  label: "Standards"
+
+styleguide:
+  label: "Style Guide"
+
+vscode:
+  label: "Visual Studio Code"
