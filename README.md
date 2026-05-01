@@ -14,14 +14,12 @@ This is my personal website portfolio -- including my resume, project highlights
   - Markdown: [Markdown All in One](yzhang.markdown-all-in-one)
 - **Pre-Commit Hooks**: [prek](https://prek.j178.dev/)
 
+You must [install pnpm](https://pnpm.io/installation) before continuing if it is not already on your system.
+
 ```bash
 cd website
-# Install pnpm with corepack and run pnpm install
-npm run init
 # shamefully-hoist to handle issues with docusaurus-lunr-search
 pnpm install --shamefully-hoist
-
-# Start a local instance
 pnpm run start
 
 # Type check, lint, format
