@@ -45,7 +45,7 @@ prek install
 
 ## Contributing
 
-Contributions are welcome -- where appropriate for correcting things like spelling errors, bugs, or suboptimal code/configurations. To get started:
+Contributions are welcome! As this is my personal website, contributions are reserved for correcting things like spelling errors, bugs, or suboptimal code/configurations. To get started:
 
 1. Fork the repository and create a new branch.
 2. Install [development dependencies](#getting-started).

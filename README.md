@@ -1,6 +1,6 @@
 # Personal Website Portfolio
 
-This is my personal website portfolio -- including my resume, project highlights, work samples, technical reference documentation, and the occasional blog post. It is built with [Docusaurus](https://https://docusaurus.io/).
+This is my personal website portfolio &mdash; including my resume, project highlights, work samples, technical reference documentation, and the occasional blog post. It is built with [Docusaurus](https://https://docusaurus.io/).
 
 ## Developer Guide
 
@@ -40,7 +40,7 @@ prek install
 
 ## Contributing
 
-Contributions are welcome -- where appropriate for correcting things like spelling errors, bugs, or suboptimal code/configurations. To get started:
+Contributions are welcome! As this is my personal website, contributions are reserved for correcting things like spelling errors, bugs, or suboptimal code/configurations. To get started:
 
 1. Fork the repository and create a new branch.
 2. Install development dependencies (see the [developer guide](#developer-guide)).
