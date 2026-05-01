@@ -1,9 +1,14 @@
 {
   "recommendations": [
-    // TypeScript
+    // Essential
+    "nhoizey.gremlins",
+    "streetsidesoftware.code-spell-checker",
+    "editorconfig.editorconfig",
+
+    // JavaScript/TypeScript
     "esbenp.prettier-vscode",
-    "dbaeumer.vscode-eslint",
-    "stylelint.vscode-stylelint",
+    "dbaeumer.vscode-eslint", // ESLint
+    "stylelint.vscode-stylelint", // CSS
 
     // Markdown
     "yzhang.markdown-all-in-one", // editor utilities, formtter
@@ -14,12 +19,8 @@
     "bierner.markdown-yaml-preamble",
     "unifiedjs.vscode-mdx",
 
-    // Writing utils
-    "streetsidesoftware.code-spell-checker",
-    "ms-vscode.wordcount",
-
     // Other
-    "hediet.vscode-drawio",
-    "nhoizey.gremlins",
-  ],
+    "redhat.vscode-yaml",
+    "hediet.vscode-drawio"
+  ]
 }
