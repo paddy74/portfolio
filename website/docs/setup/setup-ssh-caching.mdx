@@ -1,0 +1,281 @@
+---
+description: How to configure SSH agent caching.
+tags:
+  - ssh
+  - git
+  - guide
+---
+
+import TabItem from "@theme/TabItem";
+import Tabs from "@theme/Tabs";
+
+# Configuring SSH Agent Caching
+
+To avoid entering your SSH passphrase every time for Git, use `ssh-agent` to cache the decrypted private key in memory for the current session, so that you enter the passphrase only once per key, then reuse it until the session ends or a timeout expires. OpenSSH supports adding keys with a lifetime, and `AddKeysToAgent` can auto-load a key the first time it is used.[^1]
+
+[^1]: [OpenBSD General Commands Manual - SSH-AGENT(1)](https://man.openbsd.org/OpenBSD-6.7/ssh-agent.1)
+
+## Configure SSH Agent Caching
+
+A typical setup looks like:
+
+```ini
+# ~/.ssh/config
+Host *
+    AddKeysToAgent yes
+    IdentitiesOnly yes
+
+Host github.com
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/keys/github
+```
+
+Then either preload it once:
+
+```bash
+eval $(ssh-agent -s) # Start the agent
+ssh-add ~/.ssh/keys/* 2>/dev/null # Add valid private keys
+```
+
+or let SSH add the key on its first use.
+
+An optional timeout can be added with the `-t` flag. Without it, the caching usually lasts for the lifetime of the agent.
+
+<details>
+<summary>About `AddKeysToAgent`</summary>
+`AddKeysToAgent` is an SSH configuration option that automatically adds a private key to the SSH agent when it is first used for authentication, eliminating the need to manually run `ssh-add`.
+
+Set `AddKeysToAgent yes` in your `~/.ssh/config` file to enable automatic key addition. The key is added to the agent only once: when the passphrase is provided during the first connection attempt. This works with SSH clients like `ssh`, `scp`, and `git` (when using SSH).
+</details>
+
+### SSH Agent Caching on macOS
+
+On macOS (>= 10.12.2), you must enable `UseKeychain` to automatically load keys from the keychain on login.
+
+Add or verify the following lines in your `~/.ssh/config` file:
+
+```ini
+Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+```
+
+:::tip
+
+If you share your `~/.ssh/config` file across macOS and Linux or Windows, add `IgnoreUnknown UseKeychain` to the top of the file to prevent errors on non-macOS systems:
+
+:::
+
+## Start the SSH Agent Automatically
+
+<Tabs queryString="os">
+
+<TabItem value="windows" label="Windows">
+### Windows OpenSSH Agent Service
+
+On Windows, start the OpenSSH Authentication Agent automatically by running:
+
+```powershell
+Get-Service ssh-agent
+Start-Service ssh-agent
+# requires elevated permissions
+Set-Service -Name ssh-agent -StartupType Automatic
+ssh-add $HOME\.ssh\keys\github
+ssh-add -l
+```
+</TabItem>
+
+<TabItem value="linux" label="Linux">
+Due to the diverse array of Linux environments, I recommend different methods to start the SSH agent automatically depending on your setup.
+
+| Environment                  | Recommended approach                                |
+| ---------------------------- | --------------------------------------------------- |
+| WSL2                         | Reuse the Windows OpenSSH agent                     |
+| WSL2 (Linux-native workflow) | Use a helper like `keychain`                        |
+| Linux desktop (GNOME, etc.)  | Rely on the desktop keyring with a minimal fallback |
+| Servers / minimal systems    | Start `ssh-agent` once per login session            |
+
+The important underlying principle is:
+
+1. Reuse an existing agent if your environment provides one.
+2. Bridge to another system's agent if you're in a hybrid environment.
+3. Start your own agent only when necessary.
+
+### WSL2 &mdash; Reuse the Windows SSH Agent
+
+If you use WSL2, the cleanest solution is to reuse the Windows OpenSSH agent already running on Windows. This avoids starting a separate ssh-agent inside WSL; your keys live on the Windows side and are accessible inside WSL2.
+
+Windows executable interop allows Linux shells to run Windows programs simply by appending `.exe`. So when you type `ssh.exe` (versus `ssh`), WSL uses the Windows binary. In other words:
+
+- `ssh` talks to a Linux `ssh-agent` (if one exists)
+- `ssh.exe` talks to the Windows `ssh-agent` service
+
+This gives you two options:
+
+1. Run the Windows client explicitly (`ssh.exe`, `scp.exe`, `git.exe`, etc.)
+2. Configure a bridge so the Linux ssh command can reach the Windows agent socket
+
+#### Run the Windows SSH Explicitly
+
+Use a convenience alias to cleanly call the Windows client without adding the `.exe` extension.
+
+```bash
+alias ssh=ssh.exe
+```
+
+Git will now call `ssh.exe` when it uses `ssh`. However, aliases only apply to interactive shells, so explicitly configuring Git with `git config --global core.sshCommand ssh.exe` will ensure it works everywhere (scripts, tools, etc.).
+
+#### Bridge the Windows SSH Agent into WSL
+
+:::note
+
+This approach is not recommended, so only an overview of it is provided versus including an implementation guide.
+
+:::
+
+Bridging the Windows SSH agent into WSL means creating a Unix socket inside WSL and forwarding it to the Windows named pipe used by the Windows SSH agent. In practice, the common pattern is `npiperelay.exe` on Windows and `socat` in WSL: npiperelay talks to the Windows agent pipe, while `socat` exposes that as `SSH_AUTH_SOCK` for Linux `ssh`, Git, and other tools inside WSL.
+
+```mermaid
+flowchart LR
+    A[Linux ssh inside WSL] --> B[Unix socket SSH_AUTH_SOCK]
+    B --> C[socat]
+    C --> D[npiperelay.exe]
+    D --> E[Windows named pipe]
+    E --> F[Windows OpenSSH agent]
+```
+
+The upside is that Linux `ssh` remains Linux `ssh`, so tools in WSL can keep using the normal Unix-style agent socket. The downside is that this is more moving parts than simply using `ssh.exe`, and current community guidance around WSL2 generally treats the bridge approach as optional plumbing rather than the first thing to reach for.
+
+### WSL2 &mdash; Use a Helper Tool
+
+If you prefer managing keys inside WSL2 instead of Windows, use either a helper tool or [a custom startup script](#generic-linux--servers--start-your-own-agent).
+
+A popular option is [keychain](https://github.com/danielrobbins/keychain), which wraps ssh-agent and automatically reconnects shells to the existing agent.
+
+Install it and add the following to `~/.profile`:
+
+```bash
+eval "$(keychain --eval --quiet --noask)"
+```
+
+If you want to specify which keys to preload, explicitly list them:
+
+```bash
+eval "$(keychain --eval --quiet id_ed25519 work_key github_key)"
+```
+
+Keychain will:
+
+- reuse an existing agent if available
+- start one if necessary
+- store environment variables for future shells
+
+### Linux Desktop &mdash; Rely on the Desktop Keyring
+
+Most modern Linux desktops already run an SSH agent as part of the login session.
+For example, GNOME Keyring provides an SSH agent automatically.
+
+If the desktop session provides one, the variable SSH_AUTH_SOCK will already be set.
+
+A safe fallback in ~/.profile looks like this:
+
+```bash
+# Start SSH agent if one is not already running
+if [ -z "$SSH_AUTH_SOCK" ]; then
+    eval "$(ssh-agent -s)" >/dev/null
+fi
+```
+
+This script:
+
+- checks whether a session agent already exists
+- only launches a new one if none is present
+
+Because .profile runs once per login session, this prevents spawning a new agent for every shell.
+
+### Generic Linux / Servers &mdash; Start Your Own Agent
+
+On headless systems or minimal environments, you may need to manage the agent yourself.
+
+Add the below to your `~/.profile`:
+
+```bash
+# Remove stale agent env files
+find "$HOME/.ssh" -maxdepth 1 -type f -name 'agent_env.*' -mtime +7 -delete 2>/dev/null
+agent_file="$HOME/.ssh/agent_env.${XDG_SESSION_ID:-$$}"
+
+# Start SSH agent if one is not already running
+if [ -z "$SSH_AUTH_SOCK" ]; then
+    if [ -f "$agent_file" ]; then
+        . "$agent_file" >/dev/null
+    fi
+
+    if ! kill -0 "${SSH_AGENT_PID:-}" 2>/dev/null; then
+        eval "$(ssh-agent -s)" >/dev/null
+        {
+            echo "export SSH_AUTH_SOCK=$SSH_AUTH_SOCK"
+            echo "export SSH_AGENT_PID=$SSH_AGENT_PID"
+        } > "$agent_file"
+        chmod 600 "$agent_file"
+    fi
+fi
+```
+
+This script:
+
+- reconnects to an existing agent if possible
+- starts a new one if necessary
+- saves the agent environment so future shells can reuse it
+- cleans-up stale agent environment files
+
+:::note
+
+The SSH agent startup script belongs in `~/.profile` so that it runs once per login session, establishing a single agent for the entire session.
+
+:::
+
+</TabItem>
+
+<TabItem value="macos" label="macOS">
+### macOS SSH Agent
+
+On macOS, you typically do not need to configure an SSH agent to automatically start.
+
+macOS will automatically start an SSH agent as part of the user login session via `launchd`, and shells inherit the `SSH_AUTH_SOCK` environment variable needed to communicate with it.
+</TabItem>
+
+</Tabs>
+
+---
+
+## Troubleshooting
+
+In the same shell you are troubleshooting, run:
+
+```bash
+ssh-add -l
+```
+
+An error like "Error connecting to agent" indicates that your agent is not running. Start the agent with `eval $(ssh-agent -s)` or [configure it to start automatically](#start-the-ssh-agent-automatically).
+
+If you get something like "Could not open a connection to your authentication agent", then the agent is the problem. If it says the agent has no identities, then your key is not loaded yet. Load the key manually with `ssh-add ~/.ssh/keys/YOUR_KEY`. After that, `ssh-add -l` should show the key, and Git/SSH operations should stop reprompting for the rest of that agent session. That is the intended caching behavior of `ssh-agent`.
+
+That said, even with perfect config, you will still be prompted every time if:
+
+- you open a fresh shell that is not connected to the same agent,
+- the agent is not started at login,
+- Git commit signing is using GPG, not SSH. Git supports multiple signing backends, and if your signing backend is GPG, then ssh-agent will not help with commit signing.
+
+Debug GPG signing by running `git config --global --get gpg.format`. If `gpg.format` is `ssh`, then the `ssh-agent` is the right path. If it is unset or `openpgp`, then the repeated prompts for commit signing are coming from GPG, which needs [`gpg-agent` caching](./setup-gpg-caching.md) instead.
+
+On Windows, make sure the OpenSSH Authentication Agent service is running, otherwise you will continue to be prompted every time &mdash; even if the config looks fine. Check and resolve this issue by running:
+
+```powershell
+Get-Service ssh-agent
+Start-Service ssh-agent
+# requires elevated permissions
+Set-Service -Name ssh-agent -StartupType Automatic
+ssh-add $HOME\.ssh\keys\github
+ssh-add -l
+```

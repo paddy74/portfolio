@@ -8,7 +8,7 @@
   - Department: [Computer Vision Lab](https://sites.wp.odu.edu/VisionLab/)
 - Grade: Undergraduate
 - Title: Research Assistant
-- Start/End Date: April 2017 &mdash; Dec 2018
+- Start/End Date: April 2017 &ndash; Dec 2018
 - Location: Norfolk, VA
   - Workplace Type: On-Site
 

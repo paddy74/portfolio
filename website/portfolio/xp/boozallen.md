@@ -7,7 +7,7 @@
 - Employer: Booz Allen Hamilton
 - Grade: Senior Consultant (start); Associate (end)
 - Title: Full-Stack Developer
-- Start/End Date: Sept 2020 &mdash; Aug 2023
+- Start/End Date: Sept 2020 &ndash; Aug 2023
 - Location: Newport News, VA (Fort Eustis)
   - Workplace Type: Remote
 
@@ -23,7 +23,7 @@ Coupled with numerous delays in finding an experienced project manager and hirin
 
 As a **Senior Software Engineer** and **Deputy Project Manager** supporting Army T2COM G2, I developed full-stack data management, discovery, analytics, and visualization systems and threat-actor network analysis tools, accelerating the creation of training and doctrine research publications.
 
-- Designed and built T2COM G2's Training & Doctrine Research Data Platform in Azure GovCloud (IL4) using a microservice-based architecture; implemented ETL/data pipelines, data versioning, natural-language search, and full-stack web-applications; built with C#, ASP.NET Core MVC, ReactJS, Python, FastAPI, and Azure SQL Server.
+- Designed and built T2COM G2's Publication Management Platform in Azure GovCloud (IL4) using a microservice-based architecture; implemented ETL/data pipelines, data versioning, natural-language search, and full-stack web-applications; built with C#, ASP.NET Core MVC, ReactJS, Python, FastAPI, and Azure SQL Server.
 
 - Developed OEVis ([https://oe.t2com.army.mil/oevis/](https://oe.t2com.army.mil/oe-vis-operational-environment-visualization/)), a full-stack graph-network analytics and simulation tool with real-time co-authoring, cloud-sync, and custom "bring-your-own-model" analytics model execution; replacing outdated commercial tools and cutting licensing costs; built with Python, FastAPI, ReactJS, PostgreSQL, and Neo4j.
 

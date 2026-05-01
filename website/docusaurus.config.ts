@@ -13,6 +13,7 @@ const config: Config = {
   favicon: "img/favicon.ico",
 
   future: {
+    //faster: true,
     v4: true, // Improve compatibility with the upcoming Docusaurus v4
   },
 
@@ -44,7 +45,7 @@ const config: Config = {
     ],
   ],
 
-  onBrokenLinks: "throw",
+  onBrokenLinks: "throw", // "warn"
   markdown: {
     mermaid: true,
     hooks: {
@@ -58,7 +59,7 @@ const config: Config = {
       "@docusaurus/preset-classic",
       {
         docs: {
-          // id ommitted, default instance
+          // id omitted, default instance
           sidebarPath: "./sidebars.ts",
           editUrl: "https://github.com/paddy74/paddy74.github.io/tree/main/website/",
           path: "docs",
@@ -68,7 +69,7 @@ const config: Config = {
           onInlineTags: "warn",
         },
         // blog: false, // disable the default blog
-        blog: false /* {
+        blog: {
           showReadingTime: true,
           feedOptions: {
             type: ["rss", "atom"],
@@ -78,7 +79,7 @@ const config: Config = {
           onInlineTags: "warn",
           onInlineAuthors: "warn",
           onUntruncatedBlogPosts: "ignore", // "warn",
-        }, */,
+        },
         theme: {
           customCss: "./src/css/custom.css",
         },
@@ -116,7 +117,7 @@ const config: Config = {
           label: "Documentation",
         },
         // Blog
-        //{ to: "/blog", label: "Blog", position: "left" },
+        { to: "/blog", label: "Blog", position: "left" },
 
         // Right navbar
         {

@@ -1,9 +1,15 @@
 {
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // File Explorer
+  "files.associations": {
+    "*.mdx": "mdx",
+  },
+
   // Markdown
   "[markdown]": {
     "editor.tabSize": 2,
     "editor.defaultFormatter": "yzhang.markdown-all-in-one",
-    "editor.codeActionsOnSave": { "source.fixAll.markdownlint": true },
   },
   "markdown.validate.enabled": true,
   "markdown.updateLinksOnFileMove.enabled": "always",
@@ -17,12 +23,20 @@
 
   // Markdown MDX
   "mdx.server.enable": true,
-  "files.associations": {
-    "*.mdx": "mdx",
-  },
   "[mdx]": {
     "editor.defaultFormatter": "unifiedjs.vscode-mdx",
   },
+
+  // JavaScript
+  "js/ts.preferences.importModuleSpecifier": "non-relative",
+  "json.schemas": [
+    {
+      "fileMatch": ["*.jsonc"],
+      "schema": {
+        "allowTrailingCommas": true,
+      },
+    },
+  ],
 
   // code-spell-checker
   "cSpell.diagnosticLevel": "Hint",
@@ -33,5 +47,5 @@
     "build",
     "**/*.pdf",
   ],
-  "cSpell.words": ["youngweb"],
+  "cSpell.words": ["Adoptium", "kubeconfig", "youngweb"],
 }
