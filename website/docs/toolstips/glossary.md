@@ -1,10 +1,16 @@
 ---
+sidebar_title: Glossary
+description: Terms, jargon, and domain concepts used throughout this project.
 unlisted: true
 ---
 
 # Glossary of Terms
 
-This article provides a reference glossary of commonly used terms with definitions specific to the context of this handbook.
+This glossary defines terms, jargon, and domain concepts used throughout this project. It is intended to help navigate the project, understand the relationships between different terms and concepts, and level-set on the meaning of commonly redefined terminology within the context of this project.
+
+You will likely notice some duplicate or near-duplicate entries with different definitions. This glossary recognizes that language is descriptive &mdash; it evolves over time. Where there are competing definitions, the one contextual to this project can be identified by a :star: icon.
+
+All project definitions are selected or merged from a variety of sources in a balance of accuracy and precision, so that they are widely understandable and reusable.
 
 ## Activity
 
