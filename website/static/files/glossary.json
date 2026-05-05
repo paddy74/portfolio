@@ -1,0 +1,35 @@
+{
+  "title": "Glossary of Terms",
+  "description": "Terms, jargon, and domain concepts used throughout this project.",
+  "terms": [
+    {
+      "term": "API",
+      "abbreviation": "Application Programming Interface",
+      "definition": "A set of rules and protocols that allows different software applications to communicate.",
+      "relatedTerms": ["REST", "GraphQL"],
+      "caseSensitive": true
+    },
+    {
+      "term": "REST",
+      "abbreviation": "Representational State Transfer",
+      "definition": "An architectural style for designing networked applications.",
+      "relatedTerms": ["API", "HTTP"],
+      "caseSensitive": true
+    },
+    {
+      "term": "Activity",
+      "definition": "An effort that operates the IT infrastructure capabilities and systems/services. Unlike projects and initiatives, activities are ongoing and repetitive. Activities consume resources and have a sustainment cost.",
+      "relatedTerms": ["Initiative", "Project"]
+    },
+    {
+      "term": "Initiative",
+      "definition": "An effort intended to achieve stated objectives, such as improving performance, reducing costs, or analyzing capabilities. An initiative does not yield a new or revised system/service. Initiatives consume resources and may have associated cost. An initiative has a beginning date and end date but has no required reviews.",
+      "relatedTerms": ["Activity", "Project"]
+    },
+    {
+      "term": "Project",
+      "definition": "An IT project is a specific investment identified in a Program Plan having defined requirements, a LCC, a beginning, and an end. A project has a management structure and is planned, executed, and controlled according to a formal methodology and governed through a defined series of life-cycle reviews. An IT project may have interfaces to other projects, agencies, and international partners. A project yields a new or revised system/service that directly addresses NASA's strategic goals.",
+      "relatedTerms": ["Activity", "Initiative"]
+    }
+  ]
+}
