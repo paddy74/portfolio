@@ -1,20 +1,26 @@
 ---
+description: This guide covers how to write Markdown and the style and writing conventions for this project.
 tags:
   - markdown
   - styleguide
+  - guide
 ---
 
 # Markdown Style Guide
 
 This article covers how to get started with Markdown, what editors to use, writing conventions, and other tips.
 
-:::info
-
-This article is based on [GitLab Handbook | Handbook Markdown Guide](https://handbook.gitlab.com/docs/markdown-guide/)
-
-:::
+[^1]: [GitLab Handbook | Handbook Markdown Guide](https://handbook.gitlab.com/docs/markdown-guide/)
 
 For a list of Markdown features supported by Docusaurus, the library powering this handbook, see [Docusaurus | Markdown Features](https://docusaurus.io/docs/markdown-features) and [Markdown Guide | Docusaurus](https://www.markdownguide.org/tools/docusaurus/).
+
+## Markdown Specification
+
+This project uses the [GitHub Flavored Markdown Specification](https://github.github.com/gfm/), a superset of [CommonMark](https://commonmark.org/).
+
+CommonMark is a "**standard, unambiguous syntax specification for Markdown**, along with a **suite of comprehensive tests** to to validate Markdown implementations."[^2]
+
+[^2]: [CommonMark](https://commonmark.org/)
 
 ## Markdown Conventions
 

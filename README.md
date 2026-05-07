@@ -4,14 +4,16 @@ This is my personal website portfolio &mdash; including my resume, project highl
 
 ## Developer Guide
 
+- **Stack**: Docusaurus site (TypeScript, MD/MDX, React.js)
 - **Package Manager**: [`pnpm`](https://pnpm.io/)
+- **Runtime**: Node.js
 - **Linter**:
   - TypeScript: [ESLint](https://eslint.org/)
   - CSS: [Stylelint](https://stylelint.io/)
-  - Markdown: [markdownlint](https://github.com/DavidAnson/vscode-markdownlint/)
+  - Markdown: [markdownlint](https://github.com/DavidAnson/markdownlint/)
 - **Code Formatter**:
   - [Prettier](https://prettier.io/)
-  - Markdown: [Markdown All in One]([yzhang.markdown-all-in-one](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one))
+  - GitHub Flavored Markdown via [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
 - **Pre-Commit Hooks**: [prek](https://prek.j178.dev/)
 
 You must [install pnpm](https://pnpm.io/installation) before continuing if it is not already on your system.

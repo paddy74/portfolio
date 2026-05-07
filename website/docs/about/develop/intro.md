@@ -18,15 +18,19 @@ This handbook is built using [Docusaurus](https://docusaurus.io/); the [official
 
 ## Getting Started
 
+- **Stack**: Docusaurus site (TypeScript, MD/MDX, React.js)
 - **Package Manager**: [`pnpm`](https://pnpm.io/)
+- **Runtime**: Node.js
 - **Linter**:
   - TypeScript: [ESLint](https://eslint.org/)
   - CSS: [Stylelint](https://stylelint.io/)
-  - Markdown: [markdownlint](https://github.com/DavidAnson/vscode-markdownlint/)
+  - Markdown: [markdownlint](https://github.com/DavidAnson/markdownlint/)
 - **Code Formatter**:
   - [Prettier](https://prettier.io/)
-  - Markdown: [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
+  - GitHub Flavored Markdown via [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
 - **Pre-Commit Hooks**: [prek](https://prek.j178.dev/)
+
+You must [install pnpm](https://pnpm.io/installation) before continuing if it is not already on your system.
 
 ```bash
 cd website
@@ -48,7 +52,7 @@ prek install
 Contributions are welcome! As this is my personal website, contributions are reserved for correcting things like spelling errors, bugs, or suboptimal code/configurations. To get started:
 
 1. Fork the repository and create a new branch.
-2. Install [development dependencies](#getting-started).
+2. Install development dependencies (see [getting started](#getting-started)).
 3. Add or update tests together with your change.
 4. Run the full test, linting, and formatting suite locally.
 5. Submit a pull request describing your changes and referencing any relevant issues.
