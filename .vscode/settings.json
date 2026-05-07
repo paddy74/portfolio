@@ -3,13 +3,13 @@
 
   // File Explorer
   "files.associations": {
-    "*.mdx": "mdx",
+    "*.mdx": "mdx"
   },
 
   // Markdown
   "[markdown]": {
     "editor.tabSize": 2,
-    "editor.defaultFormatter": "yzhang.markdown-all-in-one",
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
   },
   "markdown.validate.enabled": true,
   "markdown.updateLinksOnFileMove.enabled": "always",
@@ -18,13 +18,13 @@
 
   "markdownlint.config": {
     "MD028": false,
-    "MD025": { "front_matter_title": "" },
+    "MD025": { "front_matter_title": "" }
   },
 
   // Markdown MDX
   "mdx.server.enable": true,
   "[mdx]": {
-    "editor.defaultFormatter": "unifiedjs.vscode-mdx",
+    "editor.defaultFormatter": "unifiedjs.vscode-mdx"
   },
 
   // JavaScript
@@ -33,9 +33,9 @@
     {
       "fileMatch": ["*.jsonc"],
       "schema": {
-        "allowTrailingCommas": true,
-      },
-    },
+        "allowTrailingCommas": true
+      }
+    }
   ],
 
   // code-spell-checker
@@ -45,7 +45,7 @@
     "package-lock.json",
     "node_modules",
     "build",
-    "**/*.pdf",
+    "**/*.pdf"
   ],
-  "cSpell.words": ["Adoptium", "kubeconfig", "youngweb"],
+  "cSpell.words": ["Adoptium", "kubeconfig", "youngweb"]
 }
