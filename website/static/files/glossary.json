@@ -33,6 +33,13 @@
       "definition": "An IT project is a specific investment identified in a Program Plan having defined requirements, a LCC, a beginning, and an end. A project has a management structure and is planned, executed, and controlled according to a formal methodology and governed through a defined series of life-cycle reviews. An IT project may have interfaces to other projects, agencies, and international partners. A project yields a new or revised system/service that directly addresses NASA's strategic goals.",
       "relatedTerms": ["Activity", "Initiative"],
       "sources": ["NPR 7120.7"]
+    },
+    {
+      "term": "Data Dictionary",
+      "definition": "A data dictionary is a document that outlines the structure, content, and variable definitions for a dataset or collection of data.",
+      "relatedTerms": ["Codebook"],
+      "sources": ["Harvard Medical / Data Dictionary"],
+      "page": "/docs/glossary/data-dictionary.md"
     }
   ],
   "sources": [
@@ -40,6 +47,18 @@
       "ref": "NPR 7120.7",
       "url": "https://nodis3.gsfc.nasa.gov/displayDir.cfm?t=NPR&c=7120&s=7A",
       "description": "NPR 7120.7, NASA Procedural Requirements, [NASA Information Technology and Institutional Infrastructure Program and Project Management Requirements](https://nodis3.gsfc.nasa.gov/displayDir.cfm?t=NPR&c=7120&s=7A)"
+    },
+    {
+      "ref": "Harvard Medical / Data Dictionary",
+      "url": "https://datamanagement.hms.harvard.edu/collect-analyze/documentation-metadata/data-dictionary"
+    },
+    {
+      "ref": "ICPSR, What is a Codebook?",
+      "url": "https://www.icpsr.umich.edu/web/ICPSR/cms/1983"
+    },
+    {
+      "ref": "SAMHDA, What is a Codebook?",
+      "url": "https://www.datafiles.samhsa.gov/get-help/codebooks/what-codebook"
     }
   ]
 }
