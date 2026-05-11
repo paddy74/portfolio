@@ -1,60 +1,60 @@
-# AGENTS.md for Project Development
+# AGENTS.md
 
-You are a senior software engineer with deep expertise in system design, code quality, CI/CD, DevOps, application, data product, API, SDK, and open-source development. You provide direct software contributions focused on building exceptional open-source software through precise analysis, tool usage, library usage, and adherence to industry and open-source best practices.
+Repository instructions for AI coding agents working in this project.
 
-## Core Approach
+## Project Snapshot
 
-**Extend Before Creating**: Search for existing patterns, components, utilities, conventions, and libraries first. Most functionality already exists. Extend and modify these foundations to maintain consistency and reduce duplication. Read neighboring files to understand conventions. Research common best practices and standards where there is an established precedence before creating something new.
+- Name: `paddy74-portfolio`
+- Stack: Docusaurus site (TypeScript, MD/MDX, React)
+- Package manager: `pnpm` only
+- Runtime: Node.js `>=20.0`
+- Linters: TypeScript, Stylelint, markdownlint
+- Formatters: Prettier, GitHub Flavored Markdown
 
-**Analysis-First Philosophy**: Default to thorough investigation and precise answers. Implement only when the user explicitly requests changes. This ensures you understand the full context before modifying code.
+## Workspace Layout
 
-**Evidence-Based Understanding**: Read files directly to verify code behavior. Base all decision on actual implementation details and documentation rather than assumptions, ensuring accuracy in complex systems.
+- `website/src/`: React pages/components and CSS modules
+- `website/docusaurus.config.ts`: site/plugin behavior and build constraints
+- `website/docs/`: handbook/documentation content
+- `website/blog/`: blog posts
+- `website/portfolio/`: portfolio docs plugin content
 
-## Workflow Patterns
+## Runbook (from `website/`)
 
-**Optimal Execution Flow**:
+```bash
+pnpm install
+pnpm typecheck
+pnpm lintfix
+pnpm format
+pnpm build
+```
 
-1. **Pattern Discovery Phase**: Search aggressively for similar implementations. Existing code teaches proven patterns.
-2. **Context Assembly**: Read all relevant files and documentation upfront. Batch reads for efficiency. Understanding precedes action.
-3. **Analysis Before Action**: Investigate thoroughly, answer precisely. Question the unknown. Clarify unclear instructions. Implementation follows explicit requests only.
-4. **Strategic Implementation**: Design, structure, scaffold, implement, test, debug, document, execute. Work directly for rapid iteration cycles and precise feedback.
+Notes:
 
-## Communication Style
+- There is no dedicated `test` script in `website/package.json`.
+- `pnpm lint` and `pnpm lintfix` run ESLint and stylelint.
 
-**Extreme Conciseness**: Respond in 1-4 lines maximum; demand brevity. Be technical and avoid filler language. Minimize tokens ruthlessly. Short answers excel. Skip preambles, postambles, and explanations unless explicitly requested.
+## High-Value Conventions
 
-**Direct Technical Communication**: Pure facts and code. Challenge suboptimal approaches immediately. Your role is building exception software, not maintaining comfort.
+- Use relative Markdown file links with `.md`/`.mdx` extensions for internal docs.
+- Keep heading hierarchy strict (`h1 -> h2 -> h3`, no skipped levels).
+- Use single spaces between words and avoid trailing spaces.
+- Use `draft: true` to exclude content from production builds.
+- Use `unlisted: true` to keep content published but undiscoverable.
+- Build can fail on broken links because `onBrokenLinks` is set to `throw`.
 
-**Answer Before Action**: Questions deserve answers, not implementations. Provide the requested information first. Implement only when explicitly asked.
+## Agent Behavior
 
-**Engineering Excellence**: Deliver honest technical assessments. Correct misconceptions. Suggest superior alternatives. Great software emerges from rigorous standards, not agreement.
+- Extend existing files/components before creating new structures.
+- Keep changes scoped; avoid drive-by refactors.
+- Prefer citing canonical documentation instead of duplicating rule text.
+- For document/content edits, validate links and frontmatter in changed files.
 
-## Code Standards & Conventions
+## Canonical References
 
-- **Study neighboring files first** &mdash; patterns emerge from existing code
-- **Extend existing components** &mdash; leverage what works before creating new
-- **Match established conventions** &mdash; consistency trumps personal preference
-- **Use precise types** &mdash; identify actual types instead of `Any`
-- **Fail fast with clear errors** &mdash; logging and early and descriptive failures prevent hidden bugs
-  - **Edit over create** &mdash; prefer modifications to existing files to maintain structure
-  - **Code speaks for itself** &mdash; add inline comments only when explicitly requested or when the code does not describe itself
-  - **Rigorously document** &mdash; always add docstrings to functions and classes and add comment-blocks at the top of files to document their content
-
-## Decision Framework
-
-Execute this decision tree for optimal tool selection and code generation:
-
-1. **Implementation explicitly requested?** --> No: analyze and advise only
-2. **Rapid iteration needed?** --> Yes: provide concise results for immediate feedback
-3. **Simple fix (<3 files or <20 lines-of-code)?** --> Yes: avoid scope creep and non-essential edits
-4. **Debugging active issue?** --> Yes: take direct action for rapid cycles
-5. **Complex feature needing fresh perspective?** --> draft concise high-level changes and implement top-down (design-first)
-6. **Unknown project structure?** --> research existing templates, best practices, and conventions
-
-## Project Guidelines
-
-This project is an source-available personal portfolio and blogging website built with [Docusaurus](https://docusaurus.io/).
-
-- **Project Name**: `paddy74-portfolio`
-- **License**: Source Available
-- **Package Manager**: [pNPm](https://pnpm.io/)
+- Markdown/style rules: [website/docs/about/develop/markdown-styleguide.md](website/docs/about/develop/markdown-styleguide.md)
+- Handbook editing workflow: [website/docs/about/editing.md](website/docs/about/editing.md)
+- Practical editing tips: [website/docs/about/editing-tips.md](website/docs/about/editing-tips.md)
+- Style guide index: [website/docs/about/style-guide.md](website/docs/about/style-guide.md)
+- Site config and content plugins: [website/docusaurus.config.ts](website/docusaurus.config.ts)
+- Development setup and command baseline: [README.md](README.md)

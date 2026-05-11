@@ -4,6 +4,7 @@ This is my personal website portfolio &mdash; including my resume, project highl
 
 ## Developer Guide
 
+- **Stack**: Docusaurus site (TypeScript, MD/MDX, React)
 - **Package Manager**: [`pnpm`](https://pnpm.io/)
 - **Linter**:
   - TypeScript: [ESLint](https://eslint.org/)
@@ -11,15 +12,14 @@ This is my personal website portfolio &mdash; including my resume, project highl
   - Markdown: [markdownlint](https://github.com/DavidAnson/vscode-markdownlint/)
 - **Code Formatter**:
   - [Prettier](https://prettier.io/)
-  - Markdown: [Markdown All in One]([yzhang.markdown-all-in-one](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one))
+  - Markdown: [Markdown All in One](https://marketplace.visualstudio.com/items?itemName=yzhang.markdown-all-in-one)
 - **Pre-Commit Hooks**: [prek](https://prek.j178.dev/)
 
 You must [install pnpm](https://pnpm.io/installation) before continuing if it is not already on your system.
 
 ```bash
 cd website
-# shamefully-hoist to handle issues with docusaurus-lunr-search
-pnpm install --shamefully-hoist
+pnpm install
 pnpm run start
 
 # Type check, lint, format
