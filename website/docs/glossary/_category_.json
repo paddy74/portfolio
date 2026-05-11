@@ -1,0 +1,8 @@
+{
+  "label": "Glossary",
+  "description": "Terms, jargon, and domain concepts used throughout this project.",
+  "link": {
+    "type": "doc",
+    "id": "glossary"
+  }
+}
